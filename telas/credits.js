@@ -3,9 +3,10 @@ function drawTelaCreditos(){
   let roundedShape = createGraphics(80, 80);
   roundedShape.noStroke().ellipse(roundedShape.width / 2, roundedShape.height / 2, roundedShape.width, roundedShape.width);
   imageMode(CENTER);
-  authorImg.mask(roundedShape);
-  image(authorImg, 70, 100, 80, 80);
-  image(authorImg, canvas.width - 70, 200, 80, 80);
+  pedroImg.mask(roundedShape);
+  denisImg.mask(roundedShape);
+  image(pedroImg, 70, 100, 80, 80);
+  image(denisImg, canvas.width - 70, 200, 80, 80);
   
   
   fill(theme.fontColor);

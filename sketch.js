@@ -1,25 +1,42 @@
 const MENU = 'menu';
 const CREDITS = 'credits';
+const FASES = 'fases';
 const PLAY = 'play';
 const CONTROLS = 'controls';
 const PAUSE = 'pause';
+
+const FASE1 = 'fase1';
 
 
 var TELA = MENU;
 var PLAYING = false;
 
-let authorImg;
+let pedroImg, denisImg;
 let voltarBtn, jogarBtn, controlesBtn, creditosBtn, testeDoisBtn, testeBtn;
+
+let fase1Btn, fase2Btn, fase3Btn, fase4Btn;
+
 let buttons = [];
 let focusing;
 let interactives = [];
 let interactivesCoordinates = {};
 let focusingCoordinates = {x: 0, y: 0};
 
+var fundo1;
+var aviao;
+var xav=40;
+var yav=50;
+var xd;
+var yd;
+var disparoAtivo=false;
+
 let canvas;
 
 function preload() {
-  authorImg = loadImage('assets/author.png');
+  pedroImg = loadImage('assets/author.png');
+  denisImg =loadImage("assets/denis.png")
+  aviao =loadImage("assets/nave.png")
+  fundo1 =loadImage("assets/fundo.gif")
 }
 
 function setup() {
@@ -42,14 +59,20 @@ function draw() {
   }else if(TELA != PAUSE){
     voltarBtn = drawButton(30, 30, 40, 40, "🡨", ()=> TELA = MENU, {backgroundColor: theme.pallete[1]});
   }
-  if(TELA == PLAY){
-    drawTelaPlay();
+  if(TELA == FASES){
+    drawTelaFases();
   }
   if(TELA == CONTROLS){
     drawTelaControls();
   }
   if(TELA == CREDITS){
     drawTelaCreditos();
+  }
+  if(TELA == FASE1){
+    PLAYING=true;
+    drawTelaFase1();
+  }else{
+    PLAYING=false;
   }
   if(TELA == PAUSE){
     drawTelaPause();
@@ -62,9 +85,7 @@ function draw() {
 function mouseClicked() {
   resetFocus();
   onClickMenu();
-  buttons.forEach((button) => 
-    button.click()            
-  );
+  onClickFases();
 }
 
 function escDetect(){
@@ -77,4 +98,5 @@ function escDetect(){
 function keyPressed() {
   escDetect();
   menuNavigation();
+  naveControl();
 }

@@ -3,7 +3,7 @@ function drawTelaMenu(){
   textSize(35);
   text("MENU", canvas.width/2, 140);
   
-  jogarBtn = drawButton(canvas.width/2, canvas.height/2 - 30, 150, 45, "Jogar", () =>  TELA = PLAY);
+  jogarBtn = drawButton(canvas.width/2, canvas.height/2 - 30, 150, 45, "Jogar", () =>  TELA = FASES);
   
   controlesBtn = drawButton(canvas.width/2, jogarBtn.pos.y + jogarBtn.pos.h + 10, 150, 45, "Controles", () =>  TELA = CONTROLS);
   
@@ -20,7 +20,7 @@ function drawTelaMenu(){
 //Consertar inconsistências, watch mudança de telas?
 //Refatorar, tenho qse ctz q não precisa de tanta variável
 function menuNavigation(){
-  if(TELA == MENU || TELA != "fase"){
+  if((TELA == MENU || TELA != "fase") && !PLAYING){
     if(!focusing){
       resetFocus();
       setFocusedItem({x:0, y:0});
