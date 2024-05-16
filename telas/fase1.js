@@ -4,6 +4,7 @@ function drawTelaFase1(){
   
   
   image(aviao, xav,yav,70, 70)
+  
   if (keyIsPressed){
     if (keyCode === UP_ARROW  && yav>50 && yav <=440) {
       yav=yav-10;

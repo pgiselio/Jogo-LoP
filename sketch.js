@@ -72,6 +72,7 @@ function draw() {
 
     PLAYING=true;
     drawTelaFase1();
+   
     if(mouseIsPressed && ! disparoAtivo){
       disparoAtivo=true;
           yd= yav+35;
