@@ -4,14 +4,12 @@ function drawTelaFase1(){
   
   
   image(aviao, xav,yav,70, 70)
-  if(mouseIsPressed){
-    disparoAtivo=true;
-    yd= yav+35;
-    xd= xav +50;
+  if (keyIsPressed){
+    if (keyCode === UP_ARROW  && yav>50 && yav <=440) {
+      yav=yav-10;
+    }
+    if (keyCode === DOWN_ARROW && yav>=50 && yav <=400) {
+      yav=yav+10;
+    }
   }
-  if(disparoAtivo){
-    ellipse(xd, yd, 5,5)
-    xd=xd+8;
-  }
-
 }

@@ -69,8 +69,22 @@ function draw() {
     drawTelaCreditos();
   }
   if(TELA == FASE1){
+
     PLAYING=true;
     drawTelaFase1();
+    if(mouseIsPressed && ! disparoAtivo){
+      disparoAtivo=true;
+          yd= yav+35;
+          xd= xav +50;
+        }
+        if(disparoAtivo){
+          fill("red")
+      ellipse(xd, yd, 10,5)
+          xd=xd+12;
+        }
+        if (xd>640){
+      disparoAtivo=false;
+        }
   }else{
     PLAYING=false;
   }
