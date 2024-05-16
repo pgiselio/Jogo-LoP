@@ -23,21 +23,17 @@ let interactives = [];
 let interactivesCoordinates = {};
 let focusingCoordinates = {x: 0, y: 0};
 
-var fundo1;
-var aviao;
-var xav=40;
-var yav=50;
-var xd;
-var yd;
-var disparoAtivo=false;
+var fundo1Img;
+var aviaoImg;
+
 
 let canvas;
 
 function preload() {
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png")
-  aviao =loadImage("assets/nave.png")
-  fundo1 =loadImage("assets/fundo.gif")
+  aviaoImg =loadImage("assets/nave.png")
+  fundo1Img =loadImage("assets/fundo.gif")
 }
 
 function setup() {
