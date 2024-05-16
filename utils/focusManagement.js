@@ -1,8 +1,8 @@
-
 function getInteractiveFocusedElement(){
   let first = interactives.find((e) => {
       return (e.pos.x == interactivesCoordinates?.x[focusingCoordinates?.x] && e.pos.y ==interactivesCoordinates?.y[focusingCoordinates?.y]);
     })
+    if(first) return first;
   return first;
 }
 function setFocusedItem(indice) {
@@ -25,7 +25,7 @@ function resetFocus(){
 }
 
 function setInteractives(list){
-  if(keyIsPressed){
+  if(keyIsPressed || mouseIsPressed){
     let y = [];
     let x = [];
     interactivesCoordinates = {x, y};

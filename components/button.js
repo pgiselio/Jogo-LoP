@@ -3,7 +3,7 @@ function mouseOnButton(x, y, w, h) {
   
 }
 
-function drawButton(x, y, w, h, texto, onClick, style) {
+function drawButton(x, y, w, h, texto, onClick, isVisible=false, style) {
   push()
   const pos = {x, y, w, h};
   let defaultStyle = {
@@ -21,7 +21,7 @@ function drawButton(x, y, w, h, texto, onClick, style) {
   if(!mouseOn){
     fill(style?.backgroundColor || defaultStyle.backgroundColor);
   }else{
-    fill(style?.hover?.backgroundColor || defaultStyle.hover.backgroundColor);
+    fill(style?.hover?.backgroundColor || theme.pallete[0]);
   }
   
   strokeWeight(1.2);
@@ -43,7 +43,6 @@ function drawButton(x, y, w, h, texto, onClick, style) {
     fill(style?.hover?.fontColor || defaultStyle.hover.fontColor);
   }
   text(texto, x, y);
-  
   function click(){    
     if((mouseOn || JSON.stringify(focusing) === JSON.stringify(pos)) && onClick){
       onClick();
@@ -51,5 +50,5 @@ function drawButton(x, y, w, h, texto, onClick, style) {
   }
   
   pop();
-  return {texto, pos, mouseOn, click}
+  return {texto, pos, mouseOn, click, isVisible}
 }

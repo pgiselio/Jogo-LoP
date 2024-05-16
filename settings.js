@@ -3,6 +3,7 @@ const keybind = {
   down: ["ArrowDown", "s", "S"],
   left: ["ArrowLeft", "a", "A"],
   right: ["ArrowRight", "d", "D"],
+  shoot: [" ", "K", "k"],
 }
 
 const theme = {

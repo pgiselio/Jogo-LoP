@@ -10,6 +10,7 @@ const FASE1 = 'fase1';
 
 var TELA = MENU;
 var PLAYING = false;
+var PAUSED = false;
 
 let pedroImg, denisImg;
 let voltarBtn, jogarBtn, controlesBtn, creditosBtn, testeDoisBtn, testeBtn;
@@ -56,8 +57,8 @@ function draw() {
   
   if(TELA == MENU){
     drawTelaMenu();
-  }else if(TELA != PAUSE){
-    voltarBtn = drawButton(30, 30, 40, 40, "🡨", ()=> TELA = MENU, {backgroundColor: theme.pallete[1]});
+  }else{
+    voltarBtn = drawButton(30, 30, 40, 40, "🡨", (()=> TELA = MENU), (TELA != PAUSE && !PLAYING), {backgroundColor: theme.pallete[1]});
   }
   if(TELA == FASES){
     drawTelaFases();
@@ -69,49 +70,42 @@ function draw() {
     drawTelaCreditos();
   }
   if(TELA == FASE1){
-
     PLAYING=true;
-    drawTelaFase1();
-   
-    if(mouseIsPressed && ! disparoAtivo){
-      disparoAtivo=true;
-          yd= yav+35;
-          xd= xav +50;
-        }
-        if(disparoAtivo){
-          fill("red")
-      ellipse(xd, yd, 10,5)
-          xd=xd+12;
-        }
-        if (xd>640){
-      disparoAtivo=false;
-        }
+    drawFase1();
   }else{
     PLAYING=false;
   }
-  if(TELA == PAUSE){
+  if(PAUSED){
     drawTelaPause();
-  }else{
-    buttons = [];
   }
+  
   let navigationFocus = focusBox(focusing);
+
 }
 
 function mouseClicked() {
   resetFocus();
-  onClickMenu();
-  onClickFases();
+  interactives.forEach((item) => {
+      item.click();
+  });
 }
 
 function escDetect(){
-  if(key === "Escape" && !PLAYING){
+  if(key === "Escape" && !PLAYING && !PAUSED){
     TELA = MENU
+    resetFocus();
+  }
+  if(key === "Escape" && PAUSED){
+    PAUSED = false;
+    resetFocus();
+  }
+  if(key === "Escape" && PLAYING){
+    PAUSED = true;
     resetFocus();
   }
 }
 
 function keyPressed() {
   escDetect();
-  menuNavigation();
-  naveControl();
+  keyboardNavigation();
 }
