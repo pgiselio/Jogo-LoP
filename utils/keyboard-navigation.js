@@ -1,8 +1,9 @@
-var includeskey = (e) => e == key;
+
 
 //Consertar inconsistências, watch mudança de telas?
 //Refatorar, tenho qse ctz q não precisa de tanta variável
 function keyboardNavigation(){
+    var includeskey = (e) => e == keyCode;
     if((TELA == MENU || TELA != "fase") && !PLAYING  && key !== "Escape"){
       if(!focusing){
         resetFocus();

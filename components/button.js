@@ -3,6 +3,23 @@ function mouseOnButton(x, y, w, h) {
   
 }
 
+
+/**
+ * @param {number} x - posição do eixo x
+ * @param {number} y - posição do eixo y 
+ * @param {number} w - largura do botão
+ * @param {number} h - altura do botão
+ * @param {string} texto - texto dentro do botão
+ * @param {Function} onClick - função a ser executada ao clicar no botão
+ * @param {boolean} isVisible - visibilidade do botão/dispoliniplidade de clique (default: false)
+ * @param {Object} style - estilo do botão
+ * @param {string} style.backgroundColor - preenchimento padrão
+ * @param {string} style.fontColor - cor da fonte
+ * @param {number} style.fontSize - tamanho da fonte
+ * @param {Object} style.hover - estilo do botão ao passar o mouse
+ * @param {string} style.hover.backgroundColor - preenchimento ao passar o mouse
+ * @param {string} style.hover.fontColor - cor da fonte ao passar o mouse
+ */
 function drawButton(x, y, w, h, texto, onClick, isVisible=false, style) {
   push()
   const pos = {x, y, w, h};

@@ -1,7 +1,7 @@
 function drawTelaMenu(){
   fill(theme.fontColor);
   textSize(35);
-  text("MENU", canvas.width/2, 140);
+  text("O JOGO", canvas.width/2, 140);
   
   jogarBtn = drawButton(canvas.width/2, canvas.height/2 - 30, 150, 45, "Jogar", (() =>  TELA = FASES), TELA == MENU);
   

@@ -1,9 +1,9 @@
 const keybind = {
-  up: ["ArrowUp", "w", "W"],
-  down: ["ArrowDown", "s", "S"],
-  left: ["ArrowLeft", "a", "A"],
-  right: ["ArrowRight", "d", "D"],
-  shoot: [" ", "K", "k"],
+  up: [38, 87],
+  down: [40, 83],
+  left: [37, 65],
+  right: [39, 68],
+  shoot: [32, 32],
 }
 
 const theme = {
