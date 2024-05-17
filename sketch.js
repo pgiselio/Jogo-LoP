@@ -26,10 +26,13 @@ let focusingCoordinates = {x: 0, y: 0};
 var fundo1Img;
 var aviaoImg;
 
+var softcoreMusic;
+
 
 let canvas;
 
 function preload() {
+  softcoreMusic = loadSound('assets/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
@@ -38,7 +41,9 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(640, 480);
-  canvas.elt.addEventListener('contextmenu', e => e.preventDefault())
+  canvas.elt.addEventListener('contextmenu', e => e.preventDefault());
+  softcoreMusic.loop();
+  softcoreMusic.setVolume(0.2);
  
   textFont('Arial');
   textAlign(CENTER, CENTER);
@@ -68,15 +73,22 @@ function draw() {
   if(TELA == FASE1){
     PLAYING=true;
     drawFase1();
+    
   }else{
     PLAYING=false;
+    softcoreMusic.pause();
   }
   if(PAUSED){
     drawTelaPause();
+    softcoreMusic.setVolume(0.02, 0.5);
+  }else{
+    softcoreMusic.setVolume(0.2, 0.5);
   }
   
   let navigationFocus = focusBox(focusing);
-
+  if(PLAYING && !softcoreMusic.isPlaying()){
+      softcoreMusic.play();
+  }
 }
 
 function mouseClicked() {
