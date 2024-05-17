@@ -28,6 +28,7 @@ var aviaoImg;
 
 var softcoreMusic;
 
+let evilEmpireFont;
 
 let canvas;
 
@@ -37,6 +38,7 @@ function preload() {
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
   fundo1Img =loadImage("assets/fundo.gif")
+  evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
 
 function setup() {

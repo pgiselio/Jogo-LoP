@@ -18,7 +18,7 @@ function personagemActions() {
       "||",
       () => (PAUSED = true),
       TELA == FASE1 && !PAUSED,
-      { backgroundColor: theme.pallete[1] }
+      { backgroundColor: "#00000050"}
     );
     interactives.push(pausarBtn);
 
