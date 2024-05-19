@@ -32,12 +32,22 @@ let evilEmpireFont;
 
 let canvas;
 
+var xPersonagem=40;
+var yPersonagem=50;
+var xInimigo=500;
+var yInimigo=50;
+var xDisparo = xPersonagem;
+var yDisparo = yPersonagem;
+var disparoAtivo=false;
+
+
 function preload() {
   softcoreMusic = loadSound('assets/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
   fundo1Img =loadImage("assets/fundo.gif")
+  monstroImg =loadImage("assets/olhudo.gif")
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
 

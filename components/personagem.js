@@ -1,15 +1,14 @@
-var xPersonagem=40;
-var yPersonagem=50;
-var xDisparo;
-var yDisparo;
-var disparoAtivo=false;
 
 function personagem(){
   personagemActions();
   image(aviaoImg, xPersonagem, yPersonagem,70, 70);
+  image(monstroImg,xInimigo, yInimigo,150, 150);
 }
 
 function personagemActions() {
+    
+    let colisao= dist(xPersonagem, yPersonagem, xInimigo, yInimigo);
+    let disparo= dist(xDisparo, yDisparo, xInimigo, yInimigo);
     var pausarBtn = drawButton(
       30,
       30,
@@ -32,7 +31,7 @@ function personagemActions() {
       ) {
         disparoAtivo = true;
         yDisparo = yPersonagem + 35;
-        xDisparo = xPersonagem + 50;
+        xDisparo= xPersonagem + 50;
       }
       if (disparoAtivo) {
         fill("red");
@@ -42,7 +41,9 @@ function personagemActions() {
       if (xDisparo > 640) {
         disparoAtivo = false;
       }
-  
+    
+       
+
       if (PLAYING) {
         if (keyIsPressed) {
           if (
@@ -60,7 +61,23 @@ function personagemActions() {
             yPersonagem = yPersonagem + 10;
           }
         }
+    
       }
+
     }
+   
+  if (colisao > 0 && colisao < 50) {
+    xInimigo = 500;
+    yInimigo = random(70, 600)
   }
-  
+  if (disparo > 0 && disparo < 40) {
+    xInimigo = 500;
+    yInimigo = random(50, 350)
+    disparoAtivo = false;
+  }
+  if (xInimigo > -40){    xInimigo = xInimigo - 2;
+  } else {
+    xInimigo = 640;
+    yInimigo = random(50, 350)
+  }
+}
