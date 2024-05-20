@@ -1,5 +1,3 @@
-let scaleTaxa = 0.9;
-let toggleScale = true;
 function coordinatesHeader(){
   push();
   //Header com coor do mouse

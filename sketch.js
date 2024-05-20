@@ -32,17 +32,16 @@ let evilEmpireFont;
 
 let canvas;
 
-var xPersonagem=40;
-var yPersonagem=50;
-var xInimigo=500;
-var yInimigo=50;
-var xDisparo = xPersonagem;
-var yDisparo = yPersonagem;
+var personagem;
+var xDisparo;
+var yDisparo;
 var disparoAtivo=false;
+var olhudo1;
+var olhudo2;
 
 
 function preload() {
-  softcoreMusic = loadSound('assets/softcore2.mp3');
+  softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
@@ -56,7 +55,11 @@ function setup() {
   canvas.elt.addEventListener('contextmenu', e => e.preventDefault());
   softcoreMusic.loop();
   softcoreMusic.setVolume(0.2);
- 
+
+  personagem = new Personagem();
+  olhudo1 = new Olhudo();
+  olhudo2 = new Olhudo();
+
   textFont('Arial');
   textAlign(CENTER, CENTER);
 }

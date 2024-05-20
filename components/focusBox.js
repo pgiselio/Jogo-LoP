@@ -1,3 +1,6 @@
+let scaleTaxa = 0.9;
+let toggleScale = true;
+
 function focusBox(position){
   if(!position) return;
   push();
