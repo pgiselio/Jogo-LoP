@@ -48,17 +48,21 @@ class Olhudo {
     if (colisao) {
       this.x = canvas.width + 80;
       this.y = random(70, canvas.height - 50);
+      contador++;
     }
     if (disparoColisao) {
       this.x = canvas.width + 80;
       this.y = random(50, canvas.height - 50);
       disparoAtivo = false;
+      pontos+=15;
     }
     if (this.x > -80) {
       this.x = this.x - 2;
+      
     } else {
       this.x = canvas.width + 80;
       this.y = random(80, canvas.height - 50);
+      pontos-=15;
     }
     pop();
   }

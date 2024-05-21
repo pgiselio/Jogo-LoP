@@ -11,8 +11,8 @@ class Personagem {
       x >= this.x - this.width / 2 &&
       x <= this.x + this.width / 2 &&
       y >= this.y - this.height / 2 &&
-      y <= this.y + this.height / 2
-    );
+      y <= this.y + this.height / 2 
+        );
   }
   // Essa função desenha o personagem na tela
   draw() {

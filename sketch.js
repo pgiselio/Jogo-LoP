@@ -38,6 +38,8 @@ var yDisparo;
 var disparoAtivo=false;
 var olhudo1;
 var olhudo2;
+var pontos=0;
+var contador=0;
 
 
 function preload() {
@@ -46,6 +48,7 @@ function preload() {
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
   fundo1Img =loadImage("assets/fundo.gif")
+  vidasImg =loadImage("assets/vidas.gif")
   monstroImg =loadImage("assets/olhudo.gif")
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
@@ -69,7 +72,7 @@ function draw() {
   rectMode(CENTER);
   
   coordinatesHeader();
-  
+ 
   
   if(TELA == MENU){
     drawTelaMenu();
