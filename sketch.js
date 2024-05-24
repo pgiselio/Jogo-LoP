@@ -24,6 +24,8 @@ let interactives = [];
 let interactivesCoordinates = {};
 let focusingCoordinates = {x: 0, y: 0};
 
+
+var fundoFloresta = [];
 var fundo1Img;
 var fundoMenuImg;
 var aviaoImg;
@@ -39,23 +41,35 @@ var olhudo1;
 var olhudo2;
 var pontos=0;
 var vidas=4;
+var musica = true;
 
 var disparos = [];
 function preload() {
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
-  denisImg =loadImage("assets/denis.png")
-  aviaoImg =loadImage("assets/nave.png")
+  denisImg =loadImage("assets/denis.png");
+  aviaoImg =loadImage("assets/nave.png");
   fundo1Img =loadImage("assets/fundo.gif")
-  fundoMenuImg =loadImage("assets/fundos/background.jpg")
-  vidasImg =loadImage("assets/vidas.gif")
-  monstroImg =loadImage("assets/olhudo.gif")
+  fundo1Img =loadImage("assets/fundo.gif")
+  fundoFloresta[0] =loadImage("assets/fundos/forest/parallax-forest-back-trees.png");
+  fundoFloresta[1] =loadImage("assets/fundos/forest/parallax-forest-middle-trees.png");
+  fundoFloresta[2] =loadImage("assets/fundos/forest/parallax-forest-front-trees.png");
+  fundoFloresta[3] =loadImage("assets/fundos/forest/parallax-forest-lights.png");
+  fundoMenuImg =loadImage("assets/fundos/background.jpg");
+  vidasImg =loadImage("assets/vidas.gif");
+  olhudoImg = loadImage("assets/olhudo.gif");
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
 
 function setup() {
   canvas = createCanvas(640, 480);
   canvas.elt.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden && PLAYING && !PAUSED){
+      PAUSED = true;
+    }
+  
+  });
   softcoreMusic.loop();
   softcoreMusic.setVolume(0.2);
 
@@ -112,7 +126,7 @@ function draw() {
   
   let navigationFocus = focusBox(focusing);
   if(PLAYING && !softcoreMusic.isPlaying()){
-      softcoreMusic.play();
+      // softcoreMusic.play();
   }
 }
 

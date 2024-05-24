@@ -1,12 +1,15 @@
-/**
- *
- * @param {[]} layers
- * @param {number} layers[].speed
- * @param {any} layers[].image
- *
- */
+
 let paralaxPositions = [];
-function paralaxBackground(layers, static = false) {
+
+/**
+ * Função para criar um efeito de parallax no background
+ * @param {Object} layer - camada do parallax
+ * @param {number} layer.speed - Velocidade de movimento da camada
+ * @param {any} layer.image - Imagem da camada
+ * @param {Array.<layer>} layers - Lista de camadas do parallax
+ * @param {boolean} isStatic - Defina como `true` para parar o movimento do parallax
+ */
+function parallaxBackground(layers, isStatic = false) {
   for (let i = 0; i < layers.length; i++) {
     let layer = layers[i];
 
@@ -15,7 +18,7 @@ function paralaxBackground(layers, static = false) {
     // let proportion = (imageNewWidth - canvas.width)/((canvas.width/canvas.height)*2);
     let proportion = layer.image.width;
     if (paralaxPositions[i] == undefined) paralaxPositions[i] = 1;
-    if (!static) {
+    if (!isStatic) {
       if (paralaxPositions[i] * layer.speed < proportion) {
         paralaxPositions[i] += 1;
       } else {

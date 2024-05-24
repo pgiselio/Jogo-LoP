@@ -1,3 +1,5 @@
+var olhudoImg;
+
 class Olhudo {
   constructor() {
     this.x = canvas.width + 80;
@@ -8,7 +10,7 @@ class Olhudo {
   draw() {
     push();
     imageMode(CENTER);
-    image(monstroImg, this.x, this.y, this.width, this.height);
+    image(olhudoImg, this.x, this.y, this.width, this.height);
     // Use a linha abaixo para verificar a área de colisão do inimigo
     // rect(this.x, this.y, this.width, this.height);
     pop();
