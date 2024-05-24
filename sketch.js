@@ -25,6 +25,7 @@ let interactivesCoordinates = {};
 let focusingCoordinates = {x: 0, y: 0};
 
 var fundo1Img;
+var fundoMenuImg;
 var aviaoImg;
 
 var softcoreMusic;
@@ -46,6 +47,7 @@ function preload() {
   denisImg =loadImage("assets/denis.png")
   aviaoImg =loadImage("assets/nave.png")
   fundo1Img =loadImage("assets/fundo.gif")
+  fundoMenuImg =loadImage("assets/fundos/background.jpg")
   vidasImg =loadImage("assets/vidas.gif")
   monstroImg =loadImage("assets/olhudo.gif")
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');

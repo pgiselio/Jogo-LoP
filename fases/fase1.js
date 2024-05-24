@@ -1,6 +1,5 @@
 function drawFase1(){
-  background(fundo1Img);
- 
+  paralaxBackground([{speed: 2, image: fundoMenuImg}], PAUSED);
   personagem.draw();
   olhudo1.draw();
   olhudo2.draw();
