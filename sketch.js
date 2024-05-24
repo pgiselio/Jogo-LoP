@@ -72,6 +72,7 @@ function setup() {
   });
   softcoreMusic.loop();
   softcoreMusic.setVolume(0.2);
+  softcoreMusic.pause();
 
   personagem = new Personagem();
   olhudo1 = new Olhudo();
@@ -126,7 +127,7 @@ function draw() {
   
   let navigationFocus = focusBox(focusing);
   if(PLAYING && !softcoreMusic.isPlaying()){
-      // softcoreMusic.play();
+      softcoreMusic.play();
   }
 }
 

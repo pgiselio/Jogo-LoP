@@ -6,7 +6,7 @@ function drawFase1() {
       { speed: 0.6, image: fundoFloresta[1] },
       { speed: 1, image: fundoFloresta[2] },
     ],
-    PAUSED // Aqui você pode passar um booleano para parar o movimento do parallax, nesse caso o fundo para
+    PAUSED
   );
   personagem.draw();
   olhudo1.draw();
