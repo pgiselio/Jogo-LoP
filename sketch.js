@@ -34,15 +34,12 @@ let evilEmpireFont;
 let canvas;
 
 var personagem;
-var xDisparo;
-var yDisparo;
-var disparoAtivo=false;
 var olhudo1;
 var olhudo2;
 var pontos=0;
 var vidas=4;
 
-
+var disparos = [];
 function preload() {
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
@@ -63,6 +60,8 @@ function setup() {
   personagem = new Personagem();
   olhudo1 = new Olhudo();
   olhudo2 = new Olhudo();
+
+  disparos= [new Disparo(), new Disparo(), new Disparo()];
   textFont(theme.textFont);
   textAlign(CENTER, CENTER);
 }
@@ -120,6 +119,8 @@ function mouseClicked() {
   interactives.forEach((item) => {
       item.click();
   });
+  let disparoDisponivel = disparos.find(disparo => disparo.disparoAtivo == false);
+  if(disparoDisponivel) disparoDisponivel.mouseTrigger();
 }
 
 function escDetect(){
@@ -140,4 +141,9 @@ function escDetect(){
 function keyPressed() {
   escDetect();
   keyboardNavigation();
+}
+
+function keyReleased() {
+  let disparoDisponivel = disparos.find(disparo => disparo.disparoAtivo == false);
+  if(disparoDisponivel) disparoDisponivel.keyboardTrigger();
 }

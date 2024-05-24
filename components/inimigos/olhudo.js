@@ -42,28 +42,31 @@ class Olhudo {
         personagem.x - personagem.width / 2 + 2,
         personagem.y + personagem.height / 2 - 2
       );
-    
-    let disparoColisao = this.checkCollision(xDisparo, yDisparo);
+
+    disparos.forEach((disparo) => {
+      let disparoColisao = this.checkCollision(disparo.x, disparo.y);
+      if (disparoColisao) {
+        this.reset();
+        pontos += 15;
+        disparo.reset();
+      }
+    });
 
     if (colisao) {
-      this.x = canvas.width + 80;
-      this.y = random(70, canvas.height - 50);
+      this.reset();
       vidas--;
-    }
-    if (disparoColisao) {
-      this.x = canvas.width + 80;
-      this.y = random(50, canvas.height - 50);
-      disparoAtivo = false;
-      pontos+=15;
     }
     if (this.x > -80) {
       this.x = this.x - 2;
-      
     } else {
       this.x = canvas.width + 80;
       this.y = random(80, canvas.height - 50);
-      pontos-=15;
+      pontos -= 15;
     }
     pop();
+  }
+  reset() {
+    this.x = canvas.width + 80;
+    this.y = random(80, canvas.height - 50);
   }
 }
