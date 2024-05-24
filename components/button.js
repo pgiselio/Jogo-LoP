@@ -22,7 +22,8 @@ function mouseOnButton(x, y, w, h) {
  */
 function drawButton(x, y, w, h, texto, onClick, isVisible=false, style) {
   push()
-  const pos = {x, y, w, h};
+  
+  let pos = {x, y, w, h};
   let defaultStyle = {
     backgroundColor: "#5F374B00",
     fontColor: "#FFF",
@@ -33,6 +34,14 @@ function drawButton(x, y, w, h, texto, onClick, isVisible=false, style) {
       fontColor: "#FFF",
     },
   }
+
+  // Style the text.
+  textAlign(CENTER, CENTER); 
+  textStyle(style?.fontStyle || defaultStyle.fontStyle);
+  textSize(style?.fontSize || defaultStyle.fontSize);
+  if(!!!w) pos.w = (textWidth(texto) + 30);
+  if(!!!h) pos.h = ((style?.fontSize || defaultStyle.fontSize) + 20);
+ 
   let mouseOn = mouseOnButton(pos.x, pos.y, pos.w, pos.h);
   
   if(!mouseOn){
@@ -46,20 +55,16 @@ function drawButton(x, y, w, h, texto, onClick, isVisible=false, style) {
     stroke("#fff");
   }
   rectMode(CENTER);
-  rect(x, y, w, h, 4);
+  rect(pos.x, pos.y, pos.w , pos.h, 4);
   
   
-  // Style the text.
   noStroke();
-  textAlign(CENTER, CENTER);
-  textStyle(style?.fontStyle || defaultStyle.fontStyle);
-  textSize(style?.fontSize || defaultStyle.fontSize);  
   if(!mouseOn){
     fill(style?.fontColor || defaultStyle.fontColor);
   }else{
     fill(style?.hover?.fontColor || defaultStyle.hover.fontColor);
   }
-  text(texto, x, y);
+  text(texto, pos.x, pos.y);
   function click(){    
     if((mouseOn || JSON.stringify(focusing) === JSON.stringify(pos)) && onClick){
       onClick();

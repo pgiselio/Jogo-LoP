@@ -48,7 +48,7 @@ class Olhudo {
     if (colisao) {
       this.x = canvas.width + 80;
       this.y = random(70, canvas.height - 50);
-      contador++;
+      vidas--;
     }
     if (disparoColisao) {
       this.x = canvas.width + 80;

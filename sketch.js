@@ -4,6 +4,7 @@ const FASES = 'fases';
 const PLAY = 'play';
 const CONTROLS = 'controls';
 const PAUSE = 'pause';
+const GAMEOVER = 'gameover';
 
 const FASE1 = 'fase1';
 
@@ -39,7 +40,7 @@ var disparoAtivo=false;
 var olhudo1;
 var olhudo2;
 var pontos=0;
-var contador=0;
+var vidas=4;
 
 
 function preload() {
@@ -62,8 +63,7 @@ function setup() {
   personagem = new Personagem();
   olhudo1 = new Olhudo();
   olhudo2 = new Olhudo();
-
-  textFont('Arial');
+  textFont(theme.textFont);
   textAlign(CENTER, CENTER);
 }
 
@@ -88,6 +88,12 @@ function draw() {
   if(TELA == CREDITS){
     drawTelaCreditos();
   }
+  if(TELA == GAMEOVER){
+    drawTelaGameover();
+  }else{
+    scaleTaxaGO = 0.8;
+  }
+
   if(TELA == FASE1){
     PLAYING=true;
     drawFase1();
