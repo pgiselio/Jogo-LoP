@@ -51,7 +51,7 @@ var disparos = [];
 var pontos=0;
 var timer=0;
 var vidas=4;
-var musica = true;
+var musica = false;
 
 
 function preload() {
@@ -145,7 +145,7 @@ function draw() {
 
   //o focusBox deve ficar sempre no final
   focusBox(focusing);
-  if(PLAYING && !softcoreMusic.isPlaying()){
+  if(PLAYING && !softcoreMusic.isPlaying() && musica){
       softcoreMusic.play();
   }
 }
