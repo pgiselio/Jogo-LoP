@@ -11,6 +11,7 @@ var TELA = MENU;
 var PLAYING = false; //Jogo em execução e não pausado
 var PAUSED = false;
 var GAMEOVER = false;
+var WIN = false;
 
 let pedroImg, denisImg;
 
@@ -48,6 +49,7 @@ var disparos = [];
 
 //Variáveis de controle de jogo
 var pontos=0;
+var timer=0;
 var vidas=4;
 var musica = true;
 
@@ -128,7 +130,12 @@ function draw() {
   }else{
     scaleTaxaGO = 0.8;
   }
-  if(PAUSED && !GAMEOVER){
+  if(WIN){
+    drawTelaWin();
+  }else{
+    scaleTaxaW = 0.8;
+  }
+  if(PAUSED && !GAMEOVER && !WIN ){
     drawTelaPause();
     softcoreMusic.setVolume(0.02, 0.5);
   }else if(!GAMEOVER){

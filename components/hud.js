@@ -24,6 +24,9 @@ function drawHud(faseName) {
   textFont('Courier New', 25);
   textAlign(RIGHT, CENTER);
   text(pontos + " pts", canvas.width - 15, 30);
+  if (pontos == 300) {
+    WIN = true;
+  }
   pop();
 
 
@@ -38,5 +41,6 @@ function drawHud(faseName) {
   if(!PAUSED && !GAMEOVER){
     setInteractives([pausarBtn]);
   }
+  
   pop();
 }
