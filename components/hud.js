@@ -1,15 +1,18 @@
 function drawHud(faseName) {
   push();
   var pausarBtn = drawButton(
+    60,
     30,
-    30,
+    80,
     40,
-    40,
-    "||",
+    "||       ",
     () => (PAUSED = true),
     TELA == FASE1 && !PAUSED,
     { backgroundColor: "#00000050" }
   );
+  fill("#CCC");
+  textSize(16);
+  text("[Esc]", pausarBtn.pos.x + 10, pausarBtn.pos.y);
 
   fill(theme.fontColor);
   textSize(25);
@@ -26,12 +29,14 @@ function drawHud(faseName) {
 
   //Vidas
   for(let i = 0; i < vidas; i++){
-    image(vidasImg, 50 + (i * 10), 10, 40, 40);
+    image(vidasImg, pausarBtn.pos.w + 30 + (i * 10), 10, 40, 40);
   }
   
   if (vidas == 0) {
-    TELA = GAMEOVER;
+    GAMEOVER = true;
   }
-  interactives.push(pausarBtn);
+  if(!PAUSED && !GAMEOVER){
+    setInteractives([pausarBtn]);
+  }
   pop();
 }

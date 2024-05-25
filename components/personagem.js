@@ -19,7 +19,7 @@ class Personagem {
   draw() {
     push();
     imageMode(CENTER);
-    image(aviaoImg, this.x, this.y, this.width, this.height);
+    image(personagemImg, this.x, this.y, this.width, this.height);
     // rect(this.x, this.y, this.width, this.height);
     disparos.forEach((disparo) => {
       disparo.draw();

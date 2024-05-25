@@ -9,12 +9,14 @@ function drawFase1() {
     PAUSED
   );
   personagem.draw();
-  olhudo1.draw();
-  olhudo2.draw();
+  inimigos.forEach((inimigo) => {
+    inimigo.draw();
+  });
   if (!PAUSED) {
     personagem.actions();
-    olhudo1.move();
-    olhudo2.move();
+    inimigos.forEach((inimigo) => {
+      inimigo.move();
+    });
   }
   drawHud("Fase 1");
 }

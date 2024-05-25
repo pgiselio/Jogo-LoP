@@ -1,34 +1,39 @@
 const MENU = 'menu';
 const CREDITS = 'credits';
 const FASES = 'fases';
-const PLAY = 'play';
 const CONTROLS = 'controls';
 const PAUSE = 'pause';
-const GAMEOVER = 'gameover';
-
 const FASE1 = 'fase1';
 
 
+//Variáveis de controle de estado do jogo
 var TELA = MENU;
-var PLAYING = false;
+var PLAYING = false; //Jogo em execução e não pausado
 var PAUSED = false;
+var GAMEOVER = false;
 
 let pedroImg, denisImg;
-let voltarBtn, jogarBtn, controlesBtn, creditosBtn, testeDoisBtn, testeBtn;
 
-let fase1Btn, fase2Btn, fase3Btn, fase4Btn;
+let voltarBtn;
 
 let buttons = [];
+
+//Gerenciamento de foco dos itens clicáveis ou selecionáveis com o teclado
 let focusing;
 let interactives = [];
 let interactivesCoordinates = {};
 let focusingCoordinates = {x: 0, y: 0};
 
+//Imagens dos controles
+var keysImg;
+var spaceBarImg;
+var enterKeyImg;
 
+//Imagens do fundo
 var fundoFloresta = [];
-var fundo1Img;
 var fundoMenuImg;
-var aviaoImg;
+
+var personagemImg;
 
 var softcoreMusic;
 
@@ -36,21 +41,26 @@ let evilEmpireFont;
 
 let canvas;
 
+//Entidades do jogo
 var personagem;
-var olhudo1;
-var olhudo2;
+var inimigos = [];
+var disparos = [];
+
+//Variáveis de controle de jogo
 var pontos=0;
 var vidas=4;
 var musica = true;
 
-var disparos = [];
+
 function preload() {
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png");
-  aviaoImg =loadImage("assets/nave.png");
-  fundo1Img =loadImage("assets/fundo.gif")
-  fundo1Img =loadImage("assets/fundo.gif")
+  personagemImg =loadImage("assets/nave.png");
+
+  keysImg =loadImage("assets/keys.png");
+  spaceBarImg =loadImage("assets/spacebarKey.png");
+  enterKeyImg =loadImage("assets/enterKey2.png");
   fundoFloresta[0] =loadImage("assets/fundos/forest/parallax-forest-back-trees.png");
   fundoFloresta[1] =loadImage("assets/fundos/forest/parallax-forest-middle-trees.png");
   fundoFloresta[2] =loadImage("assets/fundos/forest/parallax-forest-front-trees.png");
@@ -75,10 +85,11 @@ function setup() {
   softcoreMusic.pause();
 
   personagem = new Personagem();
-  olhudo1 = new Olhudo();
-  olhudo2 = new Olhudo();
+
+  inimigos = [new Olhudo(), new Olhudo(), new Olhudo()];
 
   disparos= [new Disparo(), new Disparo(), new Disparo()];
+
   textFont(theme.textFont);
   textAlign(CENTER, CENTER);
 }
@@ -93,7 +104,7 @@ function draw() {
   if(TELA == MENU){
     drawTelaMenu();
   }else{
-    voltarBtn = drawButton(30, 30, 40, 40, "🡨", (()=> TELA = MENU), (TELA != PAUSE && !PLAYING), {backgroundColor: theme.pallete[1]});
+    voltarBtn = drawButton( canvas.width - 70, canvas.height - 40, 105, 40, "[Esc] Voltar", (()=> TELA = MENU), (TELA != PAUSE && !PLAYING), {backgroundColor: theme.pallete[1], fontSize: 17, hover: {backgroundColor: theme.pallete[0]}});
   }
   if(TELA == FASES){
     drawTelaFases();
@@ -104,12 +115,6 @@ function draw() {
   if(TELA == CREDITS){
     drawTelaCreditos();
   }
-  if(TELA == GAMEOVER){
-    drawTelaGameover();
-  }else{
-    scaleTaxaGO = 0.8;
-  }
-
   if(TELA == FASE1){
     PLAYING=true;
     drawFase1();
@@ -118,14 +123,21 @@ function draw() {
     PLAYING=false;
     softcoreMusic.pause();
   }
-  if(PAUSED){
+  if(GAMEOVER){
+    drawTelaGameover();
+  }else{
+    scaleTaxaGO = 0.8;
+  }
+  if(PAUSED && !GAMEOVER){
     drawTelaPause();
     softcoreMusic.setVolume(0.02, 0.5);
-  }else{
+  }else if(!GAMEOVER){
     softcoreMusic.setVolume(0.2, 0.5);
   }
   
-  let navigationFocus = focusBox(focusing);
+
+  //o focusBox deve ficar sempre no final
+  focusBox(focusing);
   if(PLAYING && !softcoreMusic.isPlaying()){
       softcoreMusic.play();
   }
@@ -140,7 +152,7 @@ function mouseClicked() {
   if(disparoDisponivel) disparoDisponivel.mouseTrigger();
 }
 
-function escDetect(){
+function escTrigger(){
   if(key === "Escape" && !PLAYING && !PAUSED){
     TELA = MENU
     resetFocus();
@@ -156,7 +168,7 @@ function escDetect(){
 }
 
 function keyPressed() {
-  escDetect();
+  escTrigger();
   keyboardNavigation();
 }
 

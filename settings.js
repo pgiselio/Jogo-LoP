@@ -13,3 +13,12 @@ const theme = {
   textFont: "Arial",
   pallete : ["#430A5D", "#5F374B", "#8C6A5D","#EEE4B1"],
 }
+
+let buttonBlackStyle = {
+  backgroundColor: "#00000090",
+  fontSize: 22,
+  hover: {
+    backgroundColor: "#000000",
+    fontColor: "#FFF",
+  },
+}

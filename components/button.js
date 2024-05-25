@@ -11,7 +11,7 @@ function mouseOnButton(x, y, w, h) {
  * @param {number} h - altura do botão
  * @param {string} texto - texto dentro do botão
  * @param {Function} onClick - função a ser executada ao clicar no botão
- * @param {boolean} isVisible - visibilidade do botão/dispoliniplidade de clique (default: false)
+ * @param {boolean} isVisible - visibilidade do botão/dispoliniplidade de clique (default: false) (não implementado)
  * @param {Object} style - estilo do botão
  * @param {string} style.backgroundColor - preenchimento padrão
  * @param {string} style.fontColor - cor da fonte

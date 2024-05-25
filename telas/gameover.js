@@ -1,14 +1,7 @@
 let scaleTaxaGO = 0.7;
 function drawTelaGameover() {
   push();
-  vidas = 4;
-  pontos = 0;
-  personagem.reset();
-  disparos.forEach((disparo) => {
-    disparo.reset();
-  });
-  olhudo1.reset();
-  olhudo2.reset();
+  PAUSED = true;
   PLAYING = false;
   background("#4d4d4db7");
   translate(canvas.width / 2, canvas.height / 2 - 100);
@@ -16,10 +9,10 @@ function drawTelaGameover() {
   textAlign(CENTER, CENTER);
   scale(scaleTaxaGO);
   if (scaleTaxaGO.toFixed(2) < 1) {
-    scaleTaxaGO += 0.008;
+    scaleTaxaGO += 0.005;
   }
 
-  fill("#00000090");
+  fill(`rgba(000, 000, 000, ${scaleTaxaGO.toFixed(2)})`);
   textSize(80);
   textStyle(BOLD);
   textFont(evilEmpireFont);
@@ -31,13 +24,26 @@ function drawTelaGameover() {
   let goBack = drawButton(
     canvas.width / 2,
     canvas.height / 2 + 80,
-    null,
-    null,
+    220,
+    45,
     "Voltar para o menu",
-    () => (TELA = MENU),
-    TELA == GAMEOVER
+    () => {
+      vidas = 4;
+      pontos = 0;
+      personagem.reset();
+      disparos.forEach((disparo) => {
+        disparo.reset();
+      });
+      olhudo1.reset();
+      olhudo2.reset();
+      GAMEOVER = false;
+      PAUSED = false;
+      TELA = MENU;
+    },
+    GAMEOVER,
+    buttonBlackStyle
   );
+  setInteractives([goBack]);
   pop();
 
-  setInteractives([voltarBtn, goBack]);
 }
