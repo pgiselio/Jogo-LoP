@@ -88,7 +88,7 @@ function setup() {
 
   inimigos = [new Olhudo(), new Olhudo(), new Olhudo()];
 
-  disparos= [new Disparo(), new Disparo(), new Disparo()];
+  disparos= [new Disparo(), new Disparo()];
 
   textFont(theme.textFont);
   textAlign(CENTER, CENTER);

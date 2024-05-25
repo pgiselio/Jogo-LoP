@@ -34,8 +34,9 @@ function drawTelaGameover() {
       disparos.forEach((disparo) => {
         disparo.reset();
       });
-      olhudo1.reset();
-      olhudo2.reset();
+      inimigos.forEach((inimigo) => {
+        inimigo.reset();
+      });
       GAMEOVER = false;
       PAUSED = false;
       TELA = MENU;
