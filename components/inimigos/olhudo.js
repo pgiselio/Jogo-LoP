@@ -6,6 +6,8 @@ class Olhudo {
     this.y = random(80, 350);
     this.width = 100 * 0.7;
     this.height = 56 * 0.7;
+    this.velocidade = 2;
+    this.life = 2;
   }
   draw() {
     push();
@@ -48,8 +50,11 @@ class Olhudo {
     disparos.forEach((disparo) => {
       let disparoColisao = this.checkCollision(disparo.x, disparo.y);
       if (disparoColisao) {
-        this.reset();
-        pontos += 15;
+        this.life--;
+        if (this.life < 1) {
+          this.reset();
+          pontos += 15;
+        }
         disparo.reset();
       }
     });
@@ -59,7 +64,7 @@ class Olhudo {
       vidas--;
     }
     if (this.x > -80) {
-      this.x = this.x - 2;
+      this.x -= this.velocidade;
     } else {
       this.x = canvas.width + 80;
       this.y = random(80, canvas.height - 50);
@@ -70,5 +75,6 @@ class Olhudo {
   reset() {
     this.x = canvas.width + 80;
     this.y = random(80, canvas.height - 50);
+    this.life = 2;
   }
 }
