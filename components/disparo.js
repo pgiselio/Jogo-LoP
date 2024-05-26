@@ -3,6 +3,7 @@ class Disparo {
     this.x = 50;
     this.y = canvas.height / 2;
     this.disparoAtivo = false;
+    
   }
   checkCollision(x, y) {
     return (
@@ -17,8 +18,15 @@ class Disparo {
     push();
     if(this.disparoAtivo){
       fill("red");
-      ellipse(this.x, this.y, 10, 5);
-    }
+      ellipse(this.x, this.y, 10, 5); 
+     
+      if(!tiroSoundPlayed && this.x<100 && PLAYING && !PAUSED){
+        tiroSound.play();
+        tiroSoundPlayed=true;
+     }
+   }else{
+       tiroSoundPlayed=false;
+     }
     if (this.disparoAtivo && PLAYING && !PAUSED) {
       this.x = this.x + 12;
     }

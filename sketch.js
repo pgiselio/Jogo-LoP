@@ -49,13 +49,13 @@ var disparos = [];
 
 //Variáveis de controle de jogo
 var pontos=0;
-var timer=0;
 var vidas=4;
 var musica = false;
-
+let tiroSoundPlayed = false;
 
 function preload() {
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
+  tiroSound = loadSound('assets/sounds/tiroSound.wav');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png");
   personagemImg =loadImage("assets/nave.png");
