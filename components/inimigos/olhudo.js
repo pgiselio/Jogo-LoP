@@ -1,17 +1,16 @@
 var olhudoImg;
 
 class Olhudo {
-  constructor() {
+  constructor(velocidade, maxLife) {
     this.x = canvas.width + 80;
     this.y = random(80, 350);
     this.width = 100 * 0.7;
     this.height = 56 * 0.7;
-    this.velocidade = 2;
-    this.maxLife = 2;
+    this.velocidade = velocidade || 2;
+    this.maxLife = maxLife || 2;
     this.life = this.maxLife;
   }
 
-  
   draw() {
     push();
     imageMode(CENTER);
@@ -67,7 +66,7 @@ class Olhudo {
 
     if (colisao) {
       this.reset();
-      vidas--;
+      personagem.recebeuDano();
     }
     if (this.x > -80) {
       this.x -= this.velocidade;

@@ -28,7 +28,6 @@ function drawTelaGameover() {
     45,
     "Voltar para o menu",
     () => {
-      vidas = 4;
       pontos = 0;
       personagem.reset();
       disparos.forEach((disparo) => {

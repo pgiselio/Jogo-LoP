@@ -12,7 +12,7 @@ class SaveManagement {
     loadSave() {
         const save = this.getFromLocalStorage();
         if (save && save.vidas && save.fase) {
-            vidas = save.vidas;
+            personagem.vidas = save.vidas;
             fase = save.fase;
             faseUnlocked = save.faseUnlocked;
         }else{

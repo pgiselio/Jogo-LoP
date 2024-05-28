@@ -4,7 +4,8 @@ class Personagem {
     this.y = canvas.height / 2;
     this.width = 145 * 0.3;
     this.height = 88 * 0.3;
-    this.vidas = 3;
+    this.maxLife = 4;
+    this.vidas = this.maxLife;
     this.velocidade = 8;
   }
   checkCollision(x, y) {
@@ -58,9 +59,12 @@ class Personagem {
     }
     pop();
   }
+  recebeuDano(quantidade) {
+    this.vidas -= quantidade || 1;
+  }
   reset() {
     this.x = 50;
     this.y = canvas.height / 2;
-    this.vidas = 3;
+    this.vidas = this.maxLife;
   }
 }

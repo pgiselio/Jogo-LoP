@@ -28,7 +28,6 @@ function drawTelaWin() {
     45,
     "SELECIONAR FASES",
     () => {
-      vidas =4;
       pontos = 0;
       personagem.reset();
       disparos.forEach((disparo) => {

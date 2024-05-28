@@ -31,11 +31,11 @@ function drawHud(faseName) {
 
 
   //Vidas
-  for(let i = 0; i < vidas; i++){
+  for(let i = 0; i < personagem.vidas; i++){
     image(vidasImg, pausarBtn.pos.w + 30 + (i * 10), 10, 40, 40);
   }
   
-  if (vidas == 0) {
+  if (personagem.vidas == 0) {
     GAMEOVER = true;
   }
   if(!PAUSED && !GAMEOVER){

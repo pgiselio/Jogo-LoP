@@ -49,7 +49,6 @@ var disparos = [];
 
 //Variáveis de controle de jogo
 var pontos=0;
-var vidas=4;
 var musica = false;
 let tiroSoundPlayed = false;
 
@@ -87,8 +86,6 @@ function setup() {
   softcoreMusic.pause();
 
   personagem = new Personagem();
-
-  inimigos = [new Olhudo(), new Olhudo(), new Olhudo()];
 
   disparos= [new Disparo(), new Disparo()];
 
