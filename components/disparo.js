@@ -1,6 +1,6 @@
 class Disparo {
   constructor() {
-    this.x = 50;
+    this.x = personagem.x + personagem.width / 2;
     this.y = canvas.height / 2;
     this.disparoAtivo = false;
     
@@ -20,13 +20,10 @@ class Disparo {
       fill("red");
       ellipse(this.x, this.y, 10, 5); 
      
-      if(!tiroSoundPlayed && this.x<100 && PLAYING && !PAUSED){
+      if(personagem.x + personagem.width / 2 == this.x && PLAYING && !PAUSED){
         tiroSound.play();
-        tiroSoundPlayed=true;
      }
-   }else{
-       tiroSoundPlayed=false;
-     }
+   }
     if (this.disparoAtivo && PLAYING && !PAUSED) {
       this.x = this.x + 12;
     }
@@ -53,7 +50,7 @@ class Disparo {
     }
   }
   reset() {
-    this.x = 50;
+    this.x = personagem.x + personagem.width / 2;
     this.disparoAtivo = false;
   }
 }
