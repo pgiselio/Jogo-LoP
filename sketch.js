@@ -164,11 +164,11 @@ function escTrigger(){
     TELA = MENU
     resetFocus();
   }
-  if(key === "Escape" && PAUSED && !GAMEOVER){
+  if(key === "Escape" && PAUSED && !GAMEOVER && !WIN){
     PAUSED = false;
     resetFocus();
   }
-  if(key === "Escape" && PLAYING && !GAMEOVER){
+  if(key === "Escape" && PLAYING && !GAMEOVER && !WIN){
     PAUSED = true;
     resetFocus();
   }
