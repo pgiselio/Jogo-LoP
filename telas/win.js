@@ -26,7 +26,7 @@ function drawTelaWin() {
     canvas.height / 2 + 80,
     220,
     45,
-    "SELECIONAR FASES",
+    "Selecionar fase",
     () => {
       pontos = 0;
       personagem.reset();

@@ -9,6 +9,7 @@ class Olhudo {
     this.velocidade = velocidade || 2;
     this.maxLife = maxLife || 2;
     this.life = this.maxLife;
+    this.goingZigzag = true;
   }
 
   draw() {
@@ -75,6 +76,16 @@ class Olhudo {
       pontos -= 15;
     }
     pop();
+  }
+  moveY() {
+    if (!(this.y < canvas.height - 50 && this.y > 80 )) {
+      this.goingZigzag = !this.goingZigzag;
+    }
+    if(this.goingZigzag) {
+      this.y += this.velocidade;
+    }else {
+      this.y -= this.velocidade;
+    }
   }
   reset() {
     this.x = canvas.width + 80;
