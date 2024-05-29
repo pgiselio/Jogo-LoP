@@ -17,7 +17,6 @@ function drawFase1() {
   personagem.draw();
   inimigos.forEach((inimigo) => {
     inimigo.draw();
-    disp
   });
   if (!PAUSED) {
     personagem.actions();

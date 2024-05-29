@@ -7,6 +7,6 @@ function coordinatesHeader(){
   let debugText = "X: " + mouseX + " |  Y: " + mouseY;
   fill(theme.fontColor);
   textSize(13);
-  let mouseCordinates = text(debugText + "FPS: " + frameRate(), canvas.width/2, 10);
+  let mouseCordinates = text(debugText + " |  FPS: " + Math.floor(frameRate()), canvas.width/2, 10);
   pop();
 }

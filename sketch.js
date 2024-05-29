@@ -121,18 +121,12 @@ function draw() {
   if(TELA == FASE1){
     PLAYING=true;
     drawFase1();
-    
-  }else{
-    PLAYING=false;
-    softcoreMusic.pause();
-  }
-  if(TELA == FASE2){
+  }else if(TELA == FASE2){
     PLAYING=true;
     drawFase2();
-    
   }else{
     PLAYING=false;
-    softcoreMusic.pause();
+    softcoreMusic.stop();
   }
   if(GAMEOVER){
     drawTelaGameover();
