@@ -1,5 +1,6 @@
 function drawTelaPause(){
   push();
+  rectMode(CENTER);
   PLAYING = false;
   background("#4d4d4db7");
   fill("#00000050");

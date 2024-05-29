@@ -49,7 +49,7 @@ var disparos = [];
 
 //Variáveis de controle de jogo
 var pontos=0;
-var musica = false;
+var musica = true;
 let tiroSoundPlayed = false;
 
 function preload() {
