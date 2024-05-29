@@ -35,8 +35,11 @@ var fundoFloresta = [];
 var fundoMenuImg;
 
 var personagemImg;
+var vidasImg;
+var olhudoImg;
 
 var softcoreMusic;
+var tiroSound;
 
 let evilEmpireFont;
 
