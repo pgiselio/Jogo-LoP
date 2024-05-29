@@ -4,6 +4,7 @@ const FASES = 'fases';
 const CONTROLS = 'controls';
 const PAUSE = 'pause';
 const FASE1 = 'fase1';
+const FASE2 = 'fase2';
 
 
 //Variáveis de controle de estado do jogo
@@ -120,6 +121,14 @@ function draw() {
   if(TELA == FASE1){
     PLAYING=true;
     drawFase1();
+    
+  }else{
+    PLAYING=false;
+    softcoreMusic.pause();
+  }
+  if(TELA == FASE2){
+    PLAYING=true;
+    drawFase2();
     
   }else{
     PLAYING=false;

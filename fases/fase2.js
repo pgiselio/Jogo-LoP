@@ -1,9 +1,9 @@
-let inimigosAdicionaisFase1 = 4;
+let inimigosAdicionaisFase2 = 4;
 
-function drawFase1() {
+function drawFase2() {
   personagem.velocidade = 10;
-  if (inimigos.length < inimigosAdicionaisFase1) {
-    inimigos.push(new Olhudo(1, 2));
+  if (inimigos.length < inimigosAdicionaisFase2) {
+    inimigos.push(new Olhudo(3, 2));
   }
   parallaxBackground(
     [
@@ -17,7 +17,6 @@ function drawFase1() {
   personagem.draw();
   inimigos.forEach((inimigo) => {
     inimigo.draw();
-    disp
   });
   if (!PAUSED) {
     personagem.actions();
@@ -25,6 +24,11 @@ function drawFase1() {
       inimigo.move();
     });
 
+    if (inimigos[2]) {
+      let inimigo = inimigos[2];
+      inimigo.moveY();
+    }
+
   }
-  drawHud("Fase 1");
+  drawHud("Fase 2");
 }

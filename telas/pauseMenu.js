@@ -18,7 +18,19 @@ function drawTelaPause(){
 
   let continuar = drawButton(canvas.width/2, canvas.height/2  - 15, 250, 40, "Continuar jogo", () => PAUSED = false, PAUSED && !GAMEOVER);
   let controls = drawButton(canvas.width/2, canvas.height/2 + 35, 250, 40, "Controles", ()=> {TELA = CONTROLS; PAUSED = false}, PAUSED && !GAMEOVER);
-  let menu = drawButton(canvas.width/2, canvas.height/2 + 85, 250, 40, "Voltar para o menu", ()=> {TELA = MENU ; PAUSED = false}, PAUSED && !GAMEOVER);
+  let menu = drawButton(canvas.width/2, canvas.height/2 + 85, 250, 40, "Voltar para o menu",  () => {
+    pontos = 0;
+    personagem.reset();
+    disparos.forEach((disparo) => {
+      disparo.reset();
+    });
+    inimigos.forEach((inimigo) => {
+      inimigo.reset();
+    });
+    GAMEOVER = false;
+    PAUSED = false;
+    TELA = MENU;
+  }, PAUSED && !GAMEOVER);
   setInteractives([continuar, controls, menu]);
   pop();
 }
