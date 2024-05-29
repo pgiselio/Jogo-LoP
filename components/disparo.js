@@ -3,7 +3,6 @@ class Disparo {
     this.x = personagem.x + personagem.width / 2;
     this.y = canvas.height / 2;
     this.disparoAtivo = false;
-    
   }
   checkCollision(x, y) {
     return (
@@ -16,14 +15,10 @@ class Disparo {
   // Essa função desenha o disparo na tela
   draw() {
     push();
-    if(this.disparoAtivo){
+    if (this.disparoAtivo) {
       fill("red");
-      ellipse(this.x, this.y, 10, 5); 
-     
-      if(personagem.x + personagem.width / 2 == this.x && PLAYING && !PAUSED){
-        tiroSound.play();
-     }
-   }
+      ellipse(this.x, this.y, 10, 5);
+    }
     if (this.disparoAtivo && PLAYING && !PAUSED) {
       this.x = this.x + 12;
     }
@@ -46,6 +41,7 @@ class Disparo {
     if (PLAYING) {
       this.y = personagem.y;
       this.x = personagem.x + personagem.width / 2;
+      tiroSound.play();
       this.disparoAtivo = true;
     }
   }
