@@ -4,10 +4,10 @@
 //Refatorar, tenho qse ctz q não precisa de tanta variável
 function keyboardNavigation(){
     var includeskey = (e) => e == keyCode;
-    if((TELA == MENU || TELA != "fase") && !PLAYING  && key !== "Escape"){
+    if(!PLAYING  && key !== "Escape"){
       if(!focusing){
         resetFocus();
-        setFocusedItem({x:0, y:0});
+        setFocusedItem();
         return;
       }
       
@@ -25,16 +25,13 @@ function keyboardNavigation(){
          if(focusingCoordinates?.x < interactivesCoordinates?.x?.length-1)
             focusingCoordinates.x++;
       }
-      switch(key){
-        case "Enter":
-          if(focusing){
-            let item = getInteractiveFocusedElement();
-            item.click();
-            resetFocus();
-          }
-          
-        break;
+
+      if(key == "Enter" && focusing){
+        let item = getInteractiveFocusedElement();
+        if(item) item.click();
+        resetFocus();
       }
+      
       if(key != "Escape" && key != "Enter")    
         setFocusedItem();
     }

@@ -107,7 +107,30 @@ function draw() {
   if(TELA == MENU){
     drawTelaMenu();
   }else{
-    voltarBtn = drawButton( canvas.width - 70, canvas.height - 40, 105, 40, "[Esc] Voltar", (()=> TELA = MENU), (TELA != PAUSE && !PLAYING), {backgroundColor: theme.pallete[1], fontSize: 17, hover: {backgroundColor: theme.pallete[0]}});
+    voltarBtn = drawButton(
+      canvas.width - 70,
+      canvas.height - 40,
+      105,
+      40,
+      "         Voltar",
+      () => (TELA = MENU),
+      TELA != PAUSE && !PLAYING,
+      {
+        fontSize: 17,
+        hover: { backgroundColor: theme.pallete[0] },
+      }
+    );
+    drawButton(
+      voltarBtn.pos.x - 30,
+      voltarBtn.pos.y,
+      35,
+      30,
+      "Esc",
+      undefined,
+      TELA != PAUSE && !PLAYING,
+      {...buttonBlackStyle, fontSize: 14, fontColor: "#BBB", hover: {fontColor: "#FFF"}},
+      mouseOnButton(voltarBtn.pos.x, voltarBtn.pos.y, voltarBtn.pos.w, voltarBtn.pos.h)
+    );
   }
   if(TELA == FASES){
     drawTelaFases();
