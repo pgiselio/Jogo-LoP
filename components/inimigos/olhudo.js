@@ -82,9 +82,9 @@ class Olhudo {
       this.goingZigzag = !this.goingZigzag;
     }
     if(this.goingZigzag) {
-      this.y += 1.5*this.velocidade;
+      this.y += this.velocidade;
     }else {
-      this.y -= 1.5*this.velocidade;
+      this.y -= this.velocidade;
     }
   }
   reset() {

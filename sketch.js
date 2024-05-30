@@ -222,3 +222,15 @@ function keyReleased() {
   let disparoDisponivel = disparos.find(disparo => disparo.disparoAtivo == false);
   if(disparoDisponivel) disparoDisponivel.keyboardTrigger();
 }
+
+function resetaJogo(){
+  personagem.reset();
+  disparos.forEach((disparo) => {
+    disparo.reset();
+  });
+  inimigos = [];
+  pontos = 0;
+  GAMEOVER = false;
+  WIN = false;
+  PAUSED = false;
+}

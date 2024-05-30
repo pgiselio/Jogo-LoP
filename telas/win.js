@@ -28,16 +28,7 @@ function drawTelaWin() {
     45,
     "Selecionar fase",
     () => {
-      pontos = 0;
-      personagem.reset();
-      disparos.forEach((disparo) => {
-        disparo.reset();
-      });
-      inimigos.forEach((inimigo) => {
-        inimigo.reset();
-      });
-      WIN = false;
-      PAUSED = false;
+      resetaJogo();
       TELA = FASES;
     },
     WIN,

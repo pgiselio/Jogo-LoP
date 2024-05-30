@@ -28,16 +28,7 @@ function drawTelaGameover() {
     45,
     "Voltar para o menu",
     () => {
-      pontos = 0;
-      personagem.reset();
-      disparos.forEach((disparo) => {
-        disparo.reset();
-      });
-      inimigos.forEach((inimigo) => {
-        inimigo.reset();
-      });
-      GAMEOVER = false;
-      PAUSED = false;
+      resetaJogo();
       TELA = MENU;
     },
     GAMEOVER,
