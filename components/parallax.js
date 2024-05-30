@@ -10,6 +10,8 @@ let paralaxPositions = [];
  * @param {boolean} isStatic - Defina como `true` para parar o movimento do parallax
  */
 function parallaxBackground(layers, isStatic = false) {
+  push();
+  imageMode(CORNER);
   for (let i = 0; i < layers.length; i++) {
     let layer = layers[i];
     
@@ -55,4 +57,5 @@ function parallaxBackground(layers, isStatic = false) {
         // text(o+1 + "", 30-(paralaxPositions[i] * layer.speed*3 - imageNewWidth*o + 1) , 20);
     }
   }
+  pop();
 }

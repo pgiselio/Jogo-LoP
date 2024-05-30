@@ -26,6 +26,17 @@ const defaultButtonStyle = {
   },
 };
 
+let buttonSeletorDeFasesStyle = {
+  backgroundColor: "#00000090",
+  fontColor: "#FFF",
+  fontSize: 22,
+  fontStyle: "normal",
+  hover: {
+    backgroundColor: "#000000bb",
+    fontColor: "#FFF",
+  },
+};
+
 let buttonBlackStyle = {
   backgroundColor: "#00000090",
   fontColor: "#FFF",

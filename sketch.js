@@ -37,6 +37,8 @@ var fundoFloresta = [];
 var fundoFlorestaSky = [];
 var fundoMenuImg;
 
+var fasesPreview = [];
+
 var personagemImg;
 var vidasImg;
 var olhudoImg;
@@ -79,6 +81,9 @@ function preload() {
   fundoFlorestaSky[2] =loadImage("assets/fundos/forestsky/parallax-mountain-mountains.png");
   fundoFlorestaSky[3] =loadImage("assets/fundos/forestsky/parallax-mountain-trees.png");
   fundoFlorestaSky[4] =loadImage("assets/fundos/forestsky/parallax-mountain-foreground-trees.png");
+
+  fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
+  fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");
 
   fundoMenuImg =loadImage("assets/fundos/background.jpg");
   vidasImg =loadImage("assets/vidas.gif");
