@@ -19,7 +19,7 @@ const defaultButtonStyle = {
   backgroundColor: "#00000000",
   fontColor: "#FFF",
   fontSize: 22,
-  fontStyle: p5.NORMAL,
+  fontStyle: "normal",
   hover: {
     backgroundColor: "#00000090",
     fontColor: "#FFF",
@@ -28,7 +28,9 @@ const defaultButtonStyle = {
 
 let buttonBlackStyle = {
   backgroundColor: "#00000090",
+  fontColor: "#FFF",
   fontSize: 22,
+  fontStyle: "normal",
   hover: {
     backgroundColor: "#000000",
     fontColor: "#FFF",

@@ -18,8 +18,8 @@ function mouseOnButton(x, y, w, h) {
  * @param {Object} style - estilo do botão
  * @param {string} style.backgroundColor - preenchimento padrão
  * @param {string} style.fontColor - cor da fonte
- * @param {string} style.fontStyle - estilo da fonte
  * @param {number} style.fontSize - tamanho da fonte
+ * @param {'normal' | 'bold' | 'italic' | 'bold italic'} style.fontStyle - estilo da fonte
  * @param {Object} style.hover - estilo do botão ao passar o mouse
  * @param {string} style.hover.backgroundColor - preenchimento ao passar o mouse
  * @param {string} style.hover.fontColor - cor da fonte ao passar o mouse
