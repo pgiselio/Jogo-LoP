@@ -5,14 +5,24 @@ function drawHud(faseName) {
     30,
     80,
     40,
-    "||       ",
+    "       ||",
     () => (PAUSED = true),
     TELA == FASE1 && !PAUSED,
-    { backgroundColor: "#00000050" }
+    buttonBlackStyle
   );
-  fill("#CCC");
-  textSize(16);
-  text("[Esc]", pausarBtn.pos.x + 10, pausarBtn.pos.y);
+  var escIdentifierBtn = drawButton(
+    45,
+    30,
+    40,
+    30,
+    "Esc",
+    undefined,
+    TELA == FASE1 && !PAUSED,
+    {...buttonBlackStyle, fontSize: 16, fontColor: "#CCC", hover: {...buttonBlackStyle.hover, fontColor: "#CCC"}}
+  );
+  // fill("#CCC");
+  // textSize(16);
+  // text("[Esc]", pausarBtn.pos.x + 10, pausarBtn.pos.y);
 
   fill(theme.fontColor);
   textSize(25);

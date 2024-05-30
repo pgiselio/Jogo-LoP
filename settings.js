@@ -11,8 +11,20 @@ const theme = {
   fontColorDarker: "#000",
   fontSize: 20,
   textFont: "Arial",
-  pallete : ["#430A5D", "#5F374B", "#8C6A5D","#EEE4B1"],
+  pallete : ["#141318", "#334236", "#8C6A5D","#EEE4B1"],
 }
+
+
+const defaultButtonStyle = {
+  backgroundColor: "#00000000",
+  fontColor: "#FFF",
+  fontSize: 22,
+  fontStyle: p5.NORMAL,
+  hover: {
+    backgroundColor: "#00000090",
+    fontColor: "#FFF",
+  },
+};
 
 let buttonBlackStyle = {
   backgroundColor: "#00000090",
@@ -21,4 +33,5 @@ let buttonBlackStyle = {
     backgroundColor: "#000000",
     fontColor: "#FFF",
   },
-}
+};
+
