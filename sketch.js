@@ -34,6 +34,7 @@ var enterKeyImg;
 
 //Imagens do fundo
 var fundoFloresta = [];
+var fundoFlorestaSky = [];
 var fundoMenuImg;
 
 var personagemImg;
@@ -67,10 +68,18 @@ function preload() {
   keysImg =loadImage("assets/keys.png");
   spaceBarImg =loadImage("assets/spacebarKey.png");
   enterKeyImg =loadImage("assets/enterKey2.png");
+
   fundoFloresta[0] =loadImage("assets/fundos/forest/parallax-forest-back-trees.png");
   fundoFloresta[1] =loadImage("assets/fundos/forest/parallax-forest-middle-trees.png");
   fundoFloresta[2] =loadImage("assets/fundos/forest/parallax-forest-front-trees.png");
   fundoFloresta[3] =loadImage("assets/fundos/forest/parallax-forest-lights.png");
+
+  fundoFlorestaSky[0] =loadImage("assets/fundos/forestsky/parallax-mountain-bg.png");
+  fundoFlorestaSky[1] =loadImage("assets/fundos/forestsky/parallax-mountain-montain-far.png");
+  fundoFlorestaSky[2] =loadImage("assets/fundos/forestsky/parallax-mountain-mountains.png");
+  fundoFlorestaSky[3] =loadImage("assets/fundos/forestsky/parallax-mountain-trees.png");
+  fundoFlorestaSky[4] =loadImage("assets/fundos/forestsky/parallax-mountain-foreground-trees.png");
+
   fundoMenuImg =loadImage("assets/fundos/background.jpg");
   vidasImg =loadImage("assets/vidas.gif");
   olhudoImg = loadImage("assets/olhudo.gif");

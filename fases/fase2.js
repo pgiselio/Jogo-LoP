@@ -9,10 +9,12 @@ function drawFase2() {
   inimigos.velocidade = 3;
   parallaxBackground(
     [
-      { speed: 0.4, image: fundoFloresta[0] },
-      { speed: 0.4, image: fundoFloresta[3] },
-      { speed: 0.6, image: fundoFloresta[1] },
-      { speed: 1, image: fundoFloresta[2] },
+      { speed: 0.3, image: fundoFlorestaSky[0] },
+       { speed: 0.4, image: fundoFlorestaSky[1] },
+      { speed: 0.5, image: fundoFlorestaSky[2] },
+      { speed: 0.6, image: fundoFlorestaSky[3] },
+      { speed: 0.9, image: fundoFlorestaSky[4] },
+     
     ],
     PAUSED
   );
