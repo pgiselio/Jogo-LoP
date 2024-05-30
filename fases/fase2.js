@@ -2,9 +2,11 @@ let inimigosAdicionaisFase2 = 4;
 
 function drawFase2() {
   personagem.velocidade = 10;
+  inimigos.velocidade = 4;
   if (inimigos.length < inimigosAdicionaisFase2) {
     inimigos.push(new Olhudo(3, 2));
-  }
+  } 
+  inimigos.velocidade = 3;
   parallaxBackground(
     [
       { speed: 0.4, image: fundoFloresta[0] },
@@ -23,11 +25,6 @@ function drawFase2() {
     inimigos.forEach((inimigo) => {
       inimigo.move();
     });
-
-    if (inimigos[2]) {
-      let inimigo = inimigos[2];
-      inimigo.moveY();
-    }
 
   }
   drawHud("Fase 2");

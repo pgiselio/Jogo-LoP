@@ -5,7 +5,7 @@ function drawTelaFases(){
   
   let fase2Btn = drawButton(fase1Btn.pos.w + fase1Btn.pos.x + 30, fase1Btn.pos.y, fase1Btn.pos.w, 150, "Fase 2", () =>  TELA = FASE2, TELA == FASES);
   
-  let fase3Btn = drawButton(fase1Btn.pos.x, fase1Btn.pos.y+ fase1Btn.pos.h + 30, fase1Btn.pos.w, 150, "Fase 3", () =>  TELA = CREDITS, TELA == FASES);
+  let fase3Btn = drawButton(fase1Btn.pos.x, fase1Btn.pos.y+ fase1Btn.pos.h + 30, fase1Btn.pos.w, 150, "Fase 3", () =>  TELA = FASE3, TELA == FASES);
   
   let fase4Btn = drawButton(fase2Btn.pos.x, fase3Btn.pos.y, fase1Btn.pos.w, 150, "Fase 4", () =>  TELA = CREDITS, TELA == FASES);
   
