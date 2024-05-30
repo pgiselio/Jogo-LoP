@@ -7,7 +7,7 @@ function drawHud(faseName) {
     40,
     "       ||",
     () => (PAUSED = true),
-    TELA == FASE1 && !PAUSED,
+    PLAYING && !PAUSED && !GAMEOVER && !WIN,
     buttonBlackStyle
   );
   var escIdentifierBtn = drawButton(
@@ -17,7 +17,7 @@ function drawHud(faseName) {
     30,
     "Esc",
     undefined,
-    TELA == FASE1 && !PAUSED,
+    PLAYING && !PAUSED && !GAMEOVER && !WIN,
     {...buttonBlackStyle, fontSize: 16, fontColor: "#CCC", hover: {...buttonBlackStyle.hover, fontColor: "#CCC"}}
   );
   // fill("#CCC");

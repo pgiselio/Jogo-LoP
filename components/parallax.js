@@ -39,7 +39,7 @@ function parallaxBackground(layers, isStatic = false) {
           imageNewWidth,
           canvas.height,
           COVER,
-          LEFT
+          CENTER
         );
 
         // rectMode(CORNER)
