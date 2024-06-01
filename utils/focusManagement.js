@@ -26,12 +26,14 @@ function resetFocus() {
 }
 
 function setInteractives(list) {
+  let filteredList = list.filter((item) => item);
   if (keyIsPressed || mouseIsPressed) {
     let y = [];
     let x = [];
     interactivesCoordinates = { x, y };
 
-    list.forEach((item) => {
+    filteredList.forEach((item) => {
+      if(!item) return;
       if (!y.includes(item.pos.y)) {
         y.push(item.pos.y);
       }
@@ -49,6 +51,6 @@ function setInteractives(list) {
       else if (a > b) return 1;
       return 0;
     });
-    interactives = list;
+    interactives = filteredList;
   }
 }

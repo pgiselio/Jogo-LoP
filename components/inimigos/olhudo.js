@@ -14,11 +14,27 @@ class Olhudo {
 
   draw() {
     push();
-    imageMode(CENTER);
-    image(olhudoImg, this.x, this.y, this.width, this.height);
-    // Use a linha abaixo para verificar a área de colisão do inimigo
-    // rect(this.x, this.y, this.width, this.height);
+      imageMode(CENTER);
+      image(olhudoImg, this.x, this.y, this.width, this.height);
     pop();
+
+    push();
+    // Desenha a barra de vida
+      rectMode(CORNER);
+      fill("#000");
+      rect(this.x - 40/2, this.y - 30, 40, 5);
+      fill("#0f0");
+      for(let i = 1; i <= this.life; i++){
+        rect(this.x - 40/2 + (40*i)/this.maxLife - 40/this.maxLife, this.y - 30, 40/this.maxLife, 5);
+      } 
+    pop();
+
+    // Use o trecho abaixo para verificar a área de colisão do inimigo
+    // push();
+    //   noFill();
+    //   stroke("#f00");
+    //   rect(this.x, this.y, this.width, this.height);
+    // pop();
   }
   checkCollision(x, y) {
     return (
