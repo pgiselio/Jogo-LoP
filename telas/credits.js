@@ -11,15 +11,6 @@ function drawTelaCreditos() {
   // pop();
 
   push();
-  let roundedShape = createGraphics(80, 80);
-  roundedShape
-    .noStroke()
-    .ellipse(
-      roundedShape.width / 2,
-      roundedShape.height / 2,
-      roundedShape.width,
-      roundedShape.width
-    );
   imageMode(CENTER);
   pedroImg.mask(roundedShape);
   denisImg.mask(roundedShape);

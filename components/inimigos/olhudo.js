@@ -88,6 +88,7 @@ class Olhudo {
     if (this.x > -80) {
       this.x -= this.velocidade;
     } else {
+      inimigosPerdidos++;
       this.reset();
       pontos -= 15;
     }

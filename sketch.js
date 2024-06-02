@@ -42,6 +42,7 @@ var fasesPreview = [];
 var personagemImg;
 var vidasImg;
 var olhudoImg;
+var roundedShape;
 
 var softcoreMusic;
 var tiroSound;
@@ -57,6 +58,8 @@ var disparos = [];
 
 //Variáveis de controle de jogo
 var pontos=0;
+var inimigosPerdidos=0;
+
 var musica = true;
 let tiroSoundPlayed = false;
 
@@ -107,6 +110,16 @@ function setup() {
   personagem = new Personagem();
 
   disparos= [new Disparo(), new Disparo()];
+
+  roundedShape = createGraphics(80, 80);
+  roundedShape
+    .noStroke()
+    .ellipse(
+      roundedShape.width / 2,
+      roundedShape.height / 2,
+      roundedShape.width,
+      roundedShape.width
+    );
 
   textFont(theme.textFont);
   textAlign(CENTER, CENTER);
@@ -234,6 +247,7 @@ function resetaJogo(){
     disparo.reset();
   });
   inimigos = [];
+  inimigosPerdidos = 0;
   pontos = 0;
   GAMEOVER = false;
   WIN = false;
