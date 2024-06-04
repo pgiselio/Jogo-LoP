@@ -56,25 +56,25 @@ class Personagem {
     if (PLAYING && keyIsPressed) {
       if (
         (keyIsDown(keybind.up[0]) || keyIsDown(keybind.up[1])) &&
-        this.y > 50
+        this.y > this.height + 30
       ) {
         this.y -= this.velocidade;
       }
       if (
         (keyIsDown(keybind.down[0]) || keyIsDown(keybind.down[1])) &&
-        this.y <= canvas.height - 40
+        this.y <= canvas.height - this.height/2 - 15
       ) {
         this.y += this.velocidade;
       }
       if (
         (keyIsDown(keybind.left[0]) || keyIsDown(keybind.left[1])) &&
-        this.x > 30
+        this.x > this.width/2
       ) {
         this.x -= this.velocidade;
       }
       if (
         (keyIsDown(keybind.right[0]) || keyIsDown(keybind.right[1])) &&
-        this.x <= canvas.width - 40
+        this.x <= canvas.width - this.width/2
       ) {
         this.x += this.velocidade;
       }

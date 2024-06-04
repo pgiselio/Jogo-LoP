@@ -44,6 +44,8 @@ var fasesPreview = [];
 var personagemSpriteSheet;
 var personagemSprite;
 var vidasImg;
+
+var explosionSpriteSheet;
 var olhudoImg;
 var roundedShape;
 
@@ -69,8 +71,8 @@ function preload() {
 
   personagemSpriteSheet = loadImage('assets/littleWitch.png');
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
-  tiroSound = loadSound('assets/sounds/tiroSound.wav');
-  pedroImg = loadImage('assets/author.png');
+  tiroSound = loadSound('assets/sounds/MagicSmite.wav');
+  pedroImg = loadImage('assets/pedro.png');
   denisImg =loadImage("assets/denis.png");
 
   keysImg =loadImage("assets/keys.png");
@@ -91,9 +93,11 @@ function preload() {
   fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
   fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");
 
+  explosionSpriteSheet = loadImage('assets/explosion.png');
+
   fundoMenuImg =loadImage("assets/fundos/background.jpg");
   vidasImg =loadImage("assets/vidas.gif");
-  olhudoImg = loadImage("assets/olhudo.gif");
+  olhudoImg = loadImage("assets/olhudo.png");
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
 

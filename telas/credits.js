@@ -91,6 +91,21 @@ function drawTelaCreditos() {
     "https://opengameart.org/content/little-witch-0",
     TELA == CREDITS
   );
+  assetsCredits[6] = new assetCredit(
+    30,
+    assetsCredits[5].pos.y + 20,
+    `"Explosion" by Sogomn licensed CC0: `,
+    "https://opengameart.org/content/explosion-3",
+    TELA == CREDITS
+  );
+  assetsCredits[7] = new assetCredit(
+    30,
+    assetsCredits[6].pos.y + 20,
+    `(SOUND) "Magic Smite" by Sogomn licensed CC0: `,
+    "https://opengameart.org/content/magic-smite",
+    TELA == CREDITS
+  );
+  
   pop();
   setInteractives([voltarBtn, ...assetsCredits.map((asset) => asset.button)]);
 }
