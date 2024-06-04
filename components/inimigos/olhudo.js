@@ -5,7 +5,7 @@ class Olhudo {
     this.width = 100 * 0.7;
     this.height = 56 * 0.7;
     this.x = canvas.width + 80;
-    this.y = random(this.height+50, canvas.height - 50);
+    this.y = random(this.height + 50, canvas.height - 50);
     this.velocidade = velocidade || 2;
     this.maxLife = maxLife || 2;
     this.life = this.maxLife;
@@ -62,6 +62,10 @@ class Olhudo {
 
     if (showHitbox) {
       push();
+      rect(this.x + this.width / 2 - 2, this.y + this.height / 2 - 2, 5, 5);
+      rect(this.x - this.width / 2 + 2, this.y - this.height / 2 + 2, 5, 5);
+      rect(this.x + this.width / 2 - 2, this.y - this.height / 2 + 2, 5, 5);
+      rect(this.x - this.width / 2 + 2, this.y + this.height / 2 - 2, 5, 5);
       noFill();
       stroke("#f00");
       rect(this.x, this.y, this.width, this.height);
@@ -83,24 +87,9 @@ class Olhudo {
     push();
 
     // Verifica se houve colisão com o personagem
-    let colisao =
-      this.life > 0 &&
-      (this.checkCollision(
-        personagem.x + personagem.width / 2 - 2,
-        personagem.y + personagem.height / 2 - 2
-      ) ||
-        this.checkCollision(
-          personagem.x - personagem.width / 2 + 2,
-          personagem.y - personagem.height / 2 + 2
-        ) ||
-        this.checkCollision(
-          personagem.x + personagem.width / 2 - 2,
-          personagem.y - personagem.height / 2 + 2
-        ) ||
-        this.checkCollision(
-          personagem.x - personagem.width / 2 + 2,
-          personagem.y + personagem.height / 2 - 2
-        ));
+    let houveColisao =
+      checkRectsCollision(this, personagem) ||
+      checkRectsCollision(personagem, this);
 
     disparos.forEach((disparo) => {
       let disparoColisao = this.checkCollision(disparo.x, disparo.y);
@@ -113,13 +102,14 @@ class Olhudo {
       }
     });
 
-    if (colisao) {
+    if (this.life > 0 && houveColisao) {
       this.life = 0;
       personagem.recebeuDano();
     }
+
     if (this.x > -80) {
       this.x -= this.velocidade;
-    } else {
+    } else if (this.life > 0) {
       inimigosPerdidos++;
       this.reset();
       pontos -= 15;
@@ -127,7 +117,7 @@ class Olhudo {
     pop();
   }
   moveY() {
-    if (!(this.y < canvas.height - 50 && this.y > this.height+50)) {
+    if (!(this.y < canvas.height - 50 && this.y > this.height + 50)) {
       this.goingZigzag = !this.goingZigzag;
     }
     if (this.goingZigzag) {
@@ -138,7 +128,7 @@ class Olhudo {
   }
   reset() {
     this.x = canvas.width + 80;
-    this.y = random(this.height+50, canvas.height - 50);
+    this.y = random(this.height + 50, canvas.height - 50);
     this.life = this.maxLife;
     this.killSprite.currentFrame = 0;
   }

@@ -269,4 +269,5 @@ function resetaJogo(){
   WIN = false;
   PAUSED = false;
   personagemSprite.currentFrame = 0;
+  personagemSprite.spriteLine = 0;
 }

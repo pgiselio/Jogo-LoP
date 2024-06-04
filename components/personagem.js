@@ -7,7 +7,7 @@ class Personagem {
     this.height = 46 * 1.1;
     this.maxLife = 4;
     this.vidas = this.maxLife;
-    this.velocidade = 8;
+    this.velocidade = 10;
   }
   checkCollision(x, y) {
     return (
@@ -24,7 +24,6 @@ class Personagem {
     personagemSprite.show(this.x, this.y);
     personagemSprite.imageWidth = this.width;
     personagemSprite.imageHeight = this.height;
-
     // Para a animação do sprite no último frame
     if(personagemSprite.currentFrame >= (personagemSprite.numFrames - 1) && isAnimating){
       isAnimating = false;
@@ -43,6 +42,11 @@ class Personagem {
     
     if(showHitbox){
       push();
+      rect(personagem.x + personagem.width / 2 - 2, personagem.y + personagem.height / 2 - 2, 5, 5);
+      rect(personagem.x - personagem.width / 2 + 2, personagem.y - personagem.height / 2 + 2, 5, 5);
+      rect(personagem.x + personagem.width / 2 - 2, personagem.y - personagem.height / 2 + 2, 5, 5);
+      rect(personagem.x - personagem.width / 2 + 2, personagem.y + personagem.height / 2 - 2, 5, 5);
+
         noFill();
         stroke("#f00");
         rect(this.x, this.y, this.width, this.height);
