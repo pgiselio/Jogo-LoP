@@ -1,9 +1,10 @@
+let isAnimating = false;
 class Personagem {
   constructor() {
     this.x = 50;
     this.y = canvas.height / 2;
-    this.width = 145 * 0.3;
-    this.height = 88 * 0.3;
+    this.width = 58 * 1.1;
+    this.height = 46 * 1.1;
     this.maxLife = 4;
     this.vidas = this.maxLife;
     this.velocidade = 8;
@@ -20,12 +21,33 @@ class Personagem {
   draw() {
     push();
     imageMode(CENTER);
-    image(personagemImg, this.x, this.y, this.width, this.height);
-    // rect(this.x, this.y, this.width, this.height);
+    personagemSprite.show(this.x, this.y);
+    personagemSprite.imageWidth = this.width;
+    personagemSprite.imageHeight = this.height;
+
+    // Para a animação do sprite no último frame
+    if(personagemSprite.currentFrame >= (personagemSprite.numFrames - 1) && isAnimating){
+      isAnimating = false;
+      personagemSprite.currentFrame = 0;
+      personagemSprite.spriteLine = 0;
+    }
+    if(PLAYING && !PAUSED && isAnimating && frameCount % 10 == 0){
+      personagemSprite.animate();
+    }else if(frameCount % 10 == 0 && !PAUSED) {
+      personagemSprite.animate()
+    }
     disparos.forEach((disparo) => {
       disparo.draw();
     });
     pop();
+    
+    if(showHitbox){
+      push();
+        noFill();
+        stroke("#f00");
+        rect(this.x, this.y, this.width, this.height);
+      pop();
+    }
   }
 
   // Adiciona ações ao personagem de movimentação e disparo
@@ -58,6 +80,23 @@ class Personagem {
       }
     }
     pop();
+  }
+  mouseTrigger() {
+    if(PLAYING && !PAUSED){
+        this.shoot();
+    }
+  }
+  keyboardTrigger() {
+    if(PLAYING && !PAUSED){
+      if((keyCode == keybind.shoot[0] || keyCode == keybind.shoot[1])){
+        this.shoot();
+      }
+    }
+  }
+  shoot() {
+    personagemSprite.spriteLine = 1;
+    personagemSprite.currentFrame = 3;
+    isAnimating = true;
   }
   recebeuDano(quantidade) {
     this.vidas -= quantidade || 1;

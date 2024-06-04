@@ -43,18 +43,6 @@ function parallaxBackground(layers, isStatic = false) {
           COVER,
           CENTER
         );
-
-        // rectMode(CORNER)
-        // fill(0, 0, 0, 50);
-        // rect(
-        //   -(paralaxPositions[i] * layer.speed*3 - imageNewWidth*o + 1),
-        //   0,
-        //   imageNewWidth,
-        //   30
-        // );
-        // fill(255, 255, 255, 255);
-        // textSize(20)
-        // text(o+1 + "", 30-(paralaxPositions[i] * layer.speed*3 - imageNewWidth*o + 1) , 20);
     }
   }
   pop();

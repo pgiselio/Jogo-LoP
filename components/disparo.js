@@ -39,7 +39,7 @@ class Disparo {
   }
   start() {
     if (PLAYING) {
-      this.y = personagem.y;
+      this.y = personagem.y + 5;
       this.x = personagem.x + personagem.width / 2;
       tiroSound.play();
       this.disparoAtivo = true;

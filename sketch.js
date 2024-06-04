@@ -14,6 +14,7 @@ var PLAYING = false; //Jogo em execução e não pausado
 var PAUSED = false;
 var GAMEOVER = false;
 var WIN = false;
+var showHitbox = false;
 
 let pedroImg, denisImg;
 
@@ -39,16 +40,18 @@ var fundoMenuImg;
 
 var fasesPreview = [];
 
-var personagemImg;
+//Imagens do personagem
+var personagemSpriteSheet;
+var personagemSprite;
 var vidasImg;
 var olhudoImg;
 var roundedShape;
 
+//Sons e músicas
 var softcoreMusic;
 var tiroSound;
 
 let evilEmpireFont;
-
 let canvas;
 
 //Entidades do jogo
@@ -56,19 +59,19 @@ var personagem;
 var inimigos = [];
 var disparos = [];
 
-//Variáveis de controle de jogo
+//Variáveis de status de jogo
 var pontos=0;
 var inimigosPerdidos=0;
 
 var musica = true;
-let tiroSoundPlayed = false;
 
 function preload() {
+
+  personagemSpriteSheet = loadImage('assets/littleWitch.png');
   softcoreMusic = loadSound('assets/sounds/softcore2.mp3');
   tiroSound = loadSound('assets/sounds/tiroSound.wav');
   pedroImg = loadImage('assets/author.png');
   denisImg =loadImage("assets/denis.png");
-  personagemImg =loadImage("assets/nave.png");
 
   keysImg =loadImage("assets/keys.png");
   spaceBarImg =loadImage("assets/spacebarKey.png");
@@ -107,6 +110,7 @@ function setup() {
   softcoreMusic.setVolume(0.2);
   softcoreMusic.pause();
 
+  personagemSprite = new Sprite(personagemSpriteSheet, 58, 46, 8);
   personagem = new Personagem();
 
   disparos= [new Disparo(), new Disparo()];
@@ -210,10 +214,15 @@ function draw() {
 function mouseClicked() {
   resetFocus();
   interactives.forEach((item) => {
-      item.click();
+    item.click();
   });
-  let disparoDisponivel = disparos.find(disparo => disparo.disparoAtivo == false);
-  if(disparoDisponivel) disparoDisponivel.mouseTrigger();
+  let disparoDisponivel = disparos.find(
+    (disparo) => disparo.disparoAtivo == false
+  );
+  if (disparoDisponivel) {
+    disparoDisponivel.mouseTrigger();
+    personagem.mouseTrigger();
+  }
 }
 
 function escTrigger(){
@@ -238,7 +247,10 @@ function keyPressed() {
 
 function keyReleased() {
   let disparoDisponivel = disparos.find(disparo => disparo.disparoAtivo == false);
-  if(disparoDisponivel) disparoDisponivel.keyboardTrigger();
+  if(disparoDisponivel) {
+    disparoDisponivel.keyboardTrigger();
+    personagem.keyboardTrigger();
+  }
 }
 
 function resetaJogo(){
@@ -252,4 +264,5 @@ function resetaJogo(){
   GAMEOVER = false;
   WIN = false;
   PAUSED = false;
+  personagemSprite.currentFrame = 0;
 }

@@ -29,12 +29,13 @@ class Olhudo {
       } 
     pop();
 
-    // Use o trecho abaixo para verificar a área de colisão do inimigo
-    // push();
-    //   noFill();
-    //   stroke("#f00");
-    //   rect(this.x, this.y, this.width, this.height);
-    // pop();
+    if(showHitbox) {
+      push();
+        noFill();
+        stroke("#f00");
+        rect(this.x, this.y, this.width, this.height);
+      pop();
+    }
   }
   checkCollision(x, y) {
     return (
