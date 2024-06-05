@@ -38,7 +38,7 @@ class Disparo {
     this.start();
   }
   start() {
-    if (PLAYING) {
+    if (PLAYING && !PAUSED) {
       this.y = personagem.y + 5;
       this.x = personagem.x + personagem.width / 2;
       tiroSound.play();

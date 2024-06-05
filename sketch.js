@@ -14,6 +14,7 @@ var PLAYING = false; //Jogo em execução e não pausado
 var PAUSED = false;
 var GAMEOVER = false;
 var WIN = false;
+var CONTROLSPAUSE = false;
 var showHitbox = false;
 
 let pedroImg, denisImg;
@@ -206,11 +207,15 @@ function draw() {
   }else{
     scaleTaxaW = 0.8;
   }
-  if(PAUSED && !GAMEOVER && !WIN ){
+  if(PAUSED && !GAMEOVER && !WIN && !CONTROLSPAUSE){
     drawTelaPause();
     softcoreMusic.setVolume(0.02, 0.5);
-  }else if(!GAMEOVER){
+  }else if(!GAMEOVER && !WIN && !CONTROLSPAUSE){
     softcoreMusic.setVolume(0.2, 0.5);
+  }
+
+  if(PAUSED && CONTROLSPAUSE){
+    drawTelaControlsPause();
   }
   
 
@@ -236,17 +241,23 @@ function mouseClicked() {
 }
 
 function escTrigger(){
-  if(key === "Escape" && !PLAYING && !PAUSED){
-    TELA = MENU
-    resetFocus();
-  }
-  if(key === "Escape" && PAUSED && !GAMEOVER && !WIN){
-    PAUSED = false;
-    resetFocus();
-  }
-  if(key === "Escape" && PLAYING && !GAMEOVER && !WIN){
-    PAUSED = true;
-    resetFocus();
+  if (key === "Escape") {
+    if (!PLAYING && !PAUSED) {
+      TELA = MENU;
+      resetFocus();
+    }
+    if (PAUSED && !GAMEOVER && !WIN) {
+      PAUSED = false;
+      resetFocus();
+    }
+    if (PLAYING && !GAMEOVER && !WIN) {
+      PAUSED = true;
+      resetFocus();
+    }
+    if (CONTROLSPAUSE) {
+      CONTROLSPAUSE = false;
+      resetFocus();
+    }
   }
 }
 

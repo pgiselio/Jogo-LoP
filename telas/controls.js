@@ -25,3 +25,42 @@ function drawTelaControls(){
     setInteractives([voltarBtn]);
     pop();
 }
+
+function drawTelaControlsPause(){
+    background("#4d4d4db7");
+    
+    push();
+    fill("#00000050");
+    noStroke();
+    rect(canvas.width/2, canvas.height/2, canvas.width, canvas.height)
+    pop();
+
+    fill(255);
+    drawTelaControls()
+
+    let voltar = drawButton(
+        canvas.width - 70,
+        canvas.height - 40,
+        105,
+        40,
+        "         Voltar",
+        () => (CONTROLSPAUSE = false),
+        CONTROLSPAUSE,
+        {
+          fontSize: 17,
+          hover: { backgroundColor: theme.pallete[0] },
+        }
+      );
+      drawButton(
+        voltarBtn.pos.x - 30,
+        voltarBtn.pos.y,
+        35,
+        30,
+        "Esc",
+        undefined,
+        CONTROLSPAUSE,
+        {...buttonBlackStyle, fontSize: 14, fontColor: "#BBB", hover: {fontColor: "#FFF"}},
+        mouseOnButton(voltarBtn.pos.x, voltarBtn.pos.y, voltarBtn.pos.w, voltarBtn.pos.h)
+      );
+    setInteractives([voltar]);
+}
