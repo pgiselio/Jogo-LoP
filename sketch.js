@@ -36,6 +36,7 @@ var enterKeyImg;
 //Imagens do fundo
 var fundoFloresta = [];
 var fundoFlorestaSky = [];
+var fundoMar = [];
 var fundoMenuImg;
 
 var fasesPreview = [];
@@ -89,6 +90,11 @@ function preload() {
   fundoFlorestaSky[2] =loadImage("assets/fundos/forestsky/parallax-mountain-mountains.png");
   fundoFlorestaSky[3] =loadImage("assets/fundos/forestsky/parallax-mountain-trees.png");
   fundoFlorestaSky[4] =loadImage("assets/fundos/forestsky/parallax-mountain-foreground-trees.png");
+
+  fundoMar[0] =loadImage("assets/fundos/seasky/1.png");
+  fundoMar[1] =loadImage("assets/fundos/seasky/2.png");
+  fundoMar[2] =loadImage("assets/fundos/seasky/3.png");
+  fundoMar[3] =loadImage("assets/fundos/seasky/4.png");
 
   fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
   fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");

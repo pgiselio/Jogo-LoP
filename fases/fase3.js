@@ -6,10 +6,10 @@ function drawFase3() {
   }
   parallaxBackground(
     [
-      { speed: 0.4, image: fundoFloresta[0] },
-      { speed: 0.4, image: fundoFloresta[3] },
-      { speed: 0.6, image: fundoFloresta[1] },
-      { speed: 1, image: fundoFloresta[2] },
+      { speed: 0.4, image: fundoMar[0] },
+      { speed: 0.8, image: fundoMar[3] },
+      { speed: 0.0, image: fundoMar[1] },
+      { speed: 0.5, image: fundoMar[2] },
     ],
     PAUSED
   );
