@@ -105,7 +105,13 @@ function drawTelaCreditos() {
     "https://opengameart.org/content/magic-smite",
     TELA == CREDITS
   );
-  
+  assetsCredits[8] = new assetCredit(
+    30,
+    assetsCredits[7].pos.y + 20,
+    `"Moon and Sea Pixel Art Background" by Craftpix studio licensed OGA-BY 3.0: `,
+    "https://opengameart.org/content/moon-and-sea-pixel-art-background",
+    TELA == CREDITS
+  );
   pop();
   setInteractives([voltarBtn, ...assetsCredits.map((asset) => asset.button)]);
 }
