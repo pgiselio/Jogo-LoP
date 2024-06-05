@@ -17,7 +17,7 @@ function drawTelaPause(){
   textFont('Arial');
 
   let continuar = drawButton(canvas.width/2, canvas.height/2  - 15, 250, 40, "Continuar jogo", () => PAUSED = false, PAUSED && !GAMEOVER);
-  let controls = drawButton(canvas.width/2, canvas.height/2 + 35, 250, 40, "Controles", ()=> {TELA = CONTROLS; PAUSED = false}, PAUSED && !GAMEOVER);
+  let controls = drawButton(canvas.width/2, canvas.height/2 + 35, 250, 40, "Controles", ()=> {CONTROLSPAUSE = true}, PAUSED && !GAMEOVER);
   let menu = drawButton(canvas.width/2, canvas.height/2 + 85, 250, 40, "Voltar para o menu",  () => {
     resetaJogo();
     TELA = MENU;
