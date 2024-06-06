@@ -8,6 +8,7 @@ class Personagem {
     this.maxLife = 4;
     this.vidas = this.maxLife;
     this.velocidade = 10;
+    this.sprite = new Sprite(personagemSpriteSheet, 58, 46, 8);
   }
   checkCollision(x, y) {
     return (
@@ -21,19 +22,18 @@ class Personagem {
   draw() {
     push();
     imageMode(CENTER);
-    personagemSprite.show(this.x, this.y);
-    personagemSprite.imageWidth = this.width;
-    personagemSprite.imageHeight = this.height;
+    this.sprite.show(this.x, this.y);
+    this.sprite.imageWidth = this.width;
+    this.sprite.imageHeight = this.height;
     // Para a animação do sprite no último frame
-    if(personagemSprite.currentFrame >= (personagemSprite.numFrames - 1) && isAnimating){
+    if(this.sprite.currentFrame >= (this.sprite.numFrames - 1) && isAnimating){
       isAnimating = false;
-      personagemSprite.currentFrame = 0;
-      personagemSprite.spriteLine = 0;
+      this.sprite.spriteLine = 0;
     }
     if(PLAYING && !PAUSED && isAnimating && frameCount % 10 == 0){
-      personagemSprite.animate();
+      this.sprite.animate();
     }else if(frameCount % 10 == 0 && !PAUSED) {
-      personagemSprite.animate()
+      this.sprite.animate()
     }
     disparos.forEach((disparo) => {
       disparo.draw();
@@ -98,8 +98,8 @@ class Personagem {
     }
   }
   shoot() {
-    personagemSprite.spriteLine = 1;
-    personagemSprite.currentFrame = 3;
+    this.sprite.spriteLine = 1;
+    this.sprite.currentFrame = 3;
     isAnimating = true;
   }
   recebeuDano(quantidade) {
