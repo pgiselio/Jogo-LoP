@@ -12,12 +12,27 @@ function drawTelaWin() {
     scaleTaxaW += 0.005;
   }
 
-  fill(`rgba(000, 000, 000, ${scaleTaxaW.toFixed(2)})`);
-  textSize(80);
+  fill(`rgba(000, 000, 050, ${scaleTaxaW.toFixed(2)})`);
+ 
+  textSize(60);
   textStyle(BOLD);
   textFont(evilEmpireFont);
   textLeading(60);
-  text("V I T O R I A", 0, 0);
+  text("RESULTADOS", 0, -100);
+
+  fill("rgba(0, 0, 0, 0.7)");
+  rectMode(CENTER);
+  stroke(169, 169, 169); 
+  strokeWeight(3);
+  rect(0, -5, canvas.width * 0.6, 130,20,20);
+
+  stroke(0); 
+  strokeWeight(1);
+  textSize(40);
+  fill(`#FFDEAD`);
+  text("Vidas:"+ personagem.vidas+"/4",0,-45)
+  text("Monstros perdidos: "+monstrosPerdidos,0,-15)
+  text("Rank: "+ rank, 0,15  )
 
   translate(-canvas.width / 2, -139);
   textFont(theme.textFont);
@@ -50,7 +65,7 @@ function drawTelaWin() {
   let goBackW = drawButton(
     canvas.width / 2,
     proximaFase ? (proximaFase.pos.y + proximaFase.pos.h + 10) : canvas.height/2,
-    220,
+    230,
     45,
     "Selecionar fase",
     () => {

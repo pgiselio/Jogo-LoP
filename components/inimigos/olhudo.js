@@ -113,6 +113,8 @@ class Olhudo {
       inimigosPerdidos++;
       this.reset();
       pontos -= 15;
+      monstrosPerdidos++;
+      rankPonto-=5;
     }
     pop();
   }
