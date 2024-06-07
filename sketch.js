@@ -44,7 +44,6 @@ var fasesPreview = [];
 
 //Imagens do personagem
 var personagemSpriteSheet;
-var personagemSprite;
 var vidasImg;
 
 var explosionSpriteSheet;
@@ -130,7 +129,6 @@ function setup() {
   softcoreMusic.setVolume(0.2);
   softcoreMusic.pause();
 
-  personagemSprite = new Sprite(personagemSpriteSheet, 58, 46, 8);
   personagem = new Personagem();
 
   disparos= [new Disparo(), new Disparo()];
@@ -294,6 +292,6 @@ function resetaJogo(){
   GAMEOVER = false;
   WIN = false;
   PAUSED = false;
-  personagemSprite.currentFrame = 0;
-  personagemSprite.spriteLine = 0;
+  personagem.sprite.currentFrame = 0;
+  personagem.sprite.spriteLine = 0;
 }
