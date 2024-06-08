@@ -1,24 +1,72 @@
 
 
 class SaveManagement {
-    static loaded = false;
+    constructor(){
+        this.loaded = false;
+        this.save = [0, 0, 0, 0];
+        this.loadSave();
+    }
 
     getFromLocalStorage() {
-        return JSON.parse(localStorage.getItem('LoPGameSave'));
+        const storagedSave = localStorage.getItem('LoPGameSave');
+        if (storagedSave) {
+            return storagedSave.split(',');
+        }
+        return null;
     }
     saveGame() {
-        localStorage.setItem('LoPGameSave', JSON.stringify({ fase, vidas, faseUnlocked }));
+        const storagedSave = this.getFromLocalStorage();
+        console.log(storagedSave);
+        if (storagedSave) {
+            storagedSave.forEach((value, index) => {
+                if (this.save[index] <= value) {
+                    this.save[index] = value;
+                }
+            })
+        }
+        console.log(this.save)
+        localStorage.setItem('LoPGameSave', this.save.toString());
     }
     loadSave() {
-        const save = this.getFromLocalStorage();
-        if (save && save.vidas && save.fase) {
-            personagem.vidas = save.vidas;
-            fase = save.fase;
-            faseUnlocked = save.faseUnlocked;
+        const storagedSave = this.getFromLocalStorage();
+        if (storagedSave) {
+            this.save = storagedSave;
         }else{
-            this.saveGame(1, 4, 1);
+            this.saveGame();
         }
         this.loaded = true;
     }
-    
+    getRank(fase){
+        if(fase < this.save.length){
+            if(this.save[fase] == 0){
+                return 0;
+            } else if(this.save[fase] == 1){
+                return "C";
+            } else if(this.save[fase] == 2){
+                return "B";
+            } else if(this.save[fase] == 3){
+                return "A";
+            } else if(this.save[fase] == 4){
+                return "S";
+            }
+        }
+    }
+    setRank(fase, rank){
+        if(fase < this.save.length){
+            if(rank == "C"){
+                this.save[fase] = 1;
+            } else if(rank == "B"){
+                this.save[fase] = 2;
+            } else if(rank == "A"){
+                this.save[fase] = 3;
+            } else if(rank == "S"){
+                this.save[fase] = 4;
+            }
+        }
+        this.saveGame();
+    }
+    reset(){
+        this.save = [0, 0, 0, 0];
+        localStorage.setItem('LoPGameSave', this.save.toString());
+    }
 }
