@@ -12,6 +12,11 @@ class Olhudo {
     this.goingZigzag = true;
     this.sprite = new Sprite(olhudoImg, 100, 56, 6);
     this.killSprite = new Sprite(explosionSpriteSheet, 32, 32, 6);
+    this.disparoInimigo = false;
+    this.disparoInimigoX = this.x;
+    this.disparoInimigoY = this.y;
+    this.shootInterval = 120;  // Intervalo de tiro (em frames)
+    this.shootTimer = 0;
   }
 
   draw() {
@@ -42,7 +47,6 @@ class Olhudo {
     if (this.life < 1) {
       push();
       imageMode(CENTER);
-
       this.killSprite.show(this.x, this.y);
       this.killSprite.imageWidth = this.width;
       this.killSprite.imageHeight = this.width;
@@ -72,6 +76,7 @@ class Olhudo {
       pop();
     }
   }
+
   checkCollision(x, y) {
     return (
       x >= this.x - this.width / 2 &&
@@ -80,9 +85,20 @@ class Olhudo {
       y <= this.y + this.height / 2
     );
   }
+
+  checkCollisionEnemyShoot(disparoX, disparoY) {
+    return (
+      disparoX >= personagem.x - personagem.width / 2 &&
+      disparoX <= personagem.x + personagem.width / 2 &&
+      disparoY >= personagem.y - personagem.height / 2 &&
+      disparoY <= personagem.y + personagem.height / 2
+    );
+  }
+
   setMaxLife(maxLife) {
     this.maxLife = maxLife;
   }
+
   move() {
     push();
 
@@ -93,6 +109,7 @@ class Olhudo {
 
     disparos.forEach((disparo) => {
       let disparoColisao = this.checkCollision(disparo.x, disparo.y);
+      
       if (this.life > 0 && disparoColisao && disparo.disparoAtivo) {
         this.life--;
         if (this.life < 1) {
@@ -114,10 +131,40 @@ class Olhudo {
       this.reset();
       pontos -= 15;
       monstrosPerdidos++;
-      rankPonto-=10;
+      rankPonto -= 10;
     }
     pop();
   }
+
+  shootando() {
+    this.shootTimer++;
+    if (this.shootTimer > this.shootInterval) {
+      this.disparoInimigo = true;
+      this.disparoInimigoY = this.y;
+      this.disparoInimigoX = this.x;
+      this.shootTimer = 0;
+    }
+  
+    // Desenho do disparo
+    if (this.disparoInimigo && PLAYING && !PAUSED) {
+      fill("red");
+      ellipse(this.disparoInimigoX, this.disparoInimigoY, 5, 5);
+      this.disparoInimigoX -= 6; 
+      if (this.disparoInimigoX < 0) {
+        this.disparoInimigo = false; 
+      }
+  
+      // Verifica a colisão do disparo do inimigo
+      let disparoInimigoColisao = this.checkCollisionEnemyShoot(this.disparoInimigoX, this.disparoInimigoY);
+      if (disparoInimigoColisao) {
+        this.disparoInimigo = false;
+        personagem.recebeuDano(1);
+        console.log("Eita dano bom ")
+      }
+    }
+  }
+  
+
   moveY() {
     if (!(this.y < canvas.height - 50 && this.y > this.height + 50)) {
       this.goingZigzag = !this.goingZigzag;
@@ -128,10 +175,12 @@ class Olhudo {
       this.y -= this.velocidade;
     }
   }
+
   reset() {
     this.x = canvas.width + 80;
     this.y = random(this.height + 50, canvas.height - 50);
     this.life = this.maxLife;
     this.killSprite.currentFrame = 0;
+    this.disparoInimigo = false; // Redefine disparoInimigo ao resetar
   }
 }

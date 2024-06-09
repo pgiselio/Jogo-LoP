@@ -1,6 +1,6 @@
-let qtdInimigosFase3 = 4;
+let qtdInimigosFase4 = 4;
 
-function drawFase3() {
+function drawFase4() {
   if (inimigos.length < qtdInimigosFase2) {
     inimigos.push(new Olhudo(2, 2));
   }
@@ -27,11 +27,13 @@ function drawFase3() {
     if (inimigos[2]) {
       let inimigo1 = inimigos[2];
       inimigo1.moveY();
+      inimigo1.shootando();
     }
     if (inimigos[3]) {
       let inimigo2 = inimigos[3];
       inimigo2.moveY();
     }
+    
   }
-  drawHud("Fase 3");
+  drawHud("Fase 4");
 }

@@ -55,6 +55,9 @@ function drawTelaWin() {
           TELA = FASE3;
           break;
         case FASE3:
+          TELA = FASE4;
+          break;
+           case FASE4:
           TELA = FASES;
           break;
       }

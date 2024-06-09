@@ -6,6 +6,7 @@ const PAUSE = 'pause';
 const FASE1 = 'fase1';
 const FASE2 = 'fase2';
 const FASE3 = 'fase3';
+const FASE4 = 'fase4';
 
 
 //Variáveis de controle de estado do jogo
@@ -41,6 +42,13 @@ var fundoMar = [];
 var fundoMenuImg;
 
 var fasesPreview = [];
+
+//variaveis de disparoInimigo
+var disparoInimigo= false;
+var disparoInimigoX;
+var disparoInimigoY;
+var shootInterval = 60;  
+var shootTimer = 0;
 
 //Imagens do personagem
 var personagemSpriteSheet;
@@ -200,6 +208,9 @@ function draw() {
   }else if(TELA == FASE3){
     PLAYING=true;
     drawFase3();
+  }else if(TELA == FASE4){
+    PLAYING=true;
+    drawFase4();
   }else{
     PLAYING=false;
     softcoreMusic.stop();
