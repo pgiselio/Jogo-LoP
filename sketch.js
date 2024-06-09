@@ -63,10 +63,6 @@ var inimigos = [];
 var disparos = [];
 
 //Variáveis de pontuação
-let mm=0;
-let ss=0;
-let tempo=1000;
-let cron;
 let monstrosPerdidos=0;
 let rank="";
 let rankPonto=160;
@@ -283,6 +279,7 @@ function keyReleased() {
 
 function resetaJogo(){
   personagem.reset();
+  rankPonto=160;
   disparos.forEach((disparo) => {
     disparo.reset();
   });

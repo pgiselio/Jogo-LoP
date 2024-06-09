@@ -34,18 +34,17 @@ function drawHud(faseName) {
   textFont('Courier New', 25);
   textAlign(RIGHT, CENTER);
   text(pontos + " pts", canvas.width - 15, 30);
-  if (pontos == 30 ) {
+  if (pontos == 300 ) {
     WIN = true;
-      //perda de pontos por vida
-if(personagem.life==3){
-  rankPonto-=10
+  }
+  //perda de pontos por vida
+  if(personagem.life==3){
+  rankPonto-=30
   }else if(personagem.life==2){
-      rankPonto-=20
+      rankPonto-=40
       }else if(personagem.life==1){
-      rankPonto-=30
+      rankPonto-=50
       }
-      //perda de ponto por tempo
-  
       //rank
       if (rankPonto >= 120) {
           rank = "S";
@@ -56,7 +55,6 @@ if(personagem.life==3){
         } else {
           rank = "C";
         }
-  }
   pop();
 
 
@@ -67,6 +65,7 @@ if(personagem.life==3){
   
   if (personagem.vidas == 0) {
     GAMEOVER = true;
+    rankPonto=160;
   }
   if(!PAUSED && !GAMEOVER){
     setInteractives([pausarBtn]);
