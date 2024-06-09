@@ -51,7 +51,7 @@ function drawTelaCreditos() {
   textAlign(LEFT);
   assetsCredits[0] = new assetCredit(
     30,
-    img2Pos.y + 90,
+    img2Pos.y + 80,
     `"Arrow keys, wsad, mouse icon" by InanZen licensed CC0: `,
     "https://opengameart.org/content/arrow-keys-wsad-mouse-icon",
     TELA == CREDITS
@@ -110,6 +110,13 @@ function drawTelaCreditos() {
     assetsCredits[7].pos.y + 20,
     `"Moon and Sea Pixel Art Background" by Craftpix studio licensed OGA-BY 3.0: `,
     "https://opengameart.org/content/moon-and-sea-pixel-art-background",
+    TELA == CREDITS
+  );
+  assetsCredits[9] = new assetCredit(
+    30,
+    assetsCredits[8].pos.y + 20,
+    `"Sunset Clouds Over The Sea Pixel Background" by Craftpix studio licensed OGA-BY 3.0: `,
+    "https://opengameart.org/content/sunset-clouds-over-the-sea-pixel-background",
     TELA == CREDITS
   );
   pop();

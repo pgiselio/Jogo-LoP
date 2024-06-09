@@ -6,10 +6,9 @@ function drawFase4() {
   }
   parallaxBackground(
     [
-      { speed: 0.4, image: fundoMar[0] },
-      { speed: 0.8, image: fundoMar[3] },
-      { speed: 0.0, image: fundoMar[1] },
-      { speed: 0.5, image: fundoMar[2] },
+      { speed: 0.4, image: fundoSunset[0] },
+      { speed: 0.7, image: fundoSunset[1] },
+      { speed: 0.6, image: fundoSunset[2] },
     ],
     PAUSED
   );

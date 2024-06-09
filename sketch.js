@@ -39,6 +39,7 @@ var enterKeyImg;
 var fundoFloresta = [];
 var fundoFlorestaSky = [];
 var fundoMar = [];
+var fundoSunset = [];
 var fundoMenuImg;
 
 var fasesPreview = [];
@@ -110,6 +111,11 @@ function preload() {
   fundoMar[1] =loadImage("assets/fundos/seasky/2.png");
   fundoMar[2] =loadImage("assets/fundos/seasky/3.png");
   fundoMar[3] =loadImage("assets/fundos/seasky/4.png");
+
+  fundoSunset[0] =loadImage("assets/fundos/forestsunset/1.png");
+  fundoSunset[1] =loadImage("assets/fundos/forestsunset/2.png");
+  fundoSunset[2] =loadImage("assets/fundos/forestsunset/3.png");
+
 
   fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
   fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");
