@@ -120,6 +120,7 @@ function preload() {
   fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
   fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");
   fasesPreview[2] =loadImage("assets/imgs/previewFase3.png");
+  fasesPreview[3] =loadImage("assets/imgs/previewFase4.png");
 
   explosionSpriteSheet = loadImage('assets/explosion.png');
 

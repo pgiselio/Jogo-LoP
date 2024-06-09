@@ -12,7 +12,8 @@ function drawTelaFases(){
   image(fasesPreview[2], fase1Btn.pos.x, fase1Btn.pos.y+ fase1Btn.pos.h + 30, 180, 135);
   let fase3Btn = drawButton(fase1Btn.pos.x, fase1Btn.pos.y+ fase1Btn.pos.h + 30, fase1Btn.pos.w, 135, "Fase 3", () =>  TELA = FASE3, TELA == FASES, buttonSeletorDeFasesStyle);
   
-  let fase4Btn = drawButton(fase2Btn.pos.x, fase3Btn.pos.y, fase1Btn.pos.w, 135, "Fase 4", () =>  TELA = FASE4, TELA == FASES);
+  image(fasesPreview[3], fase2Btn.pos.x, fase3Btn.pos.y, 180, 135);
+  let fase4Btn = drawButton(fase2Btn.pos.x, fase3Btn.pos.y, fase1Btn.pos.w, 135, "Fase 4", () =>  TELA = FASE4, TELA == FASES, buttonSeletorDeFasesStyle);
 
   textFont(evilEmpireFont);
   textSize(20);

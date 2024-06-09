@@ -8,7 +8,7 @@ function drawFase4() {
     [
       { speed: 0.4, image: fundoSunset[0] },
       { speed: 0.7, image: fundoSunset[1] },
-      { speed: 0.6, image: fundoSunset[2] },
+      { speed: 0.7, image: fundoSunset[2] },
     ],
     PAUSED
   );
@@ -31,6 +31,10 @@ function drawFase4() {
     if (inimigos[3]) {
       let inimigo2 = inimigos[3];
       inimigo2.moveY();
+    }
+    if (inimigos[1]) {
+      let inimigo3 = inimigos[1];
+      inimigo3.shootando();
     }
     
   }

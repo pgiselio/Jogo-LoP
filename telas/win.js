@@ -32,7 +32,7 @@ function drawTelaWin() {
   fill(`#FFDEAD`);
   text("Vidas:"+ personagem.vidas+"/4",0,-45)
   text("Monstros perdidos: "+monstrosPerdidos,0,-15)
-  text(rankPonto+"Rank: "+ rank, 0,15  )
+  text("Rank: "+ rank, 0,15  )
 
   translate(-canvas.width / 2, -139);
   textFont(theme.textFont);
