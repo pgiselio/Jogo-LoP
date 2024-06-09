@@ -71,6 +71,8 @@ let rankPonto=160;
 var pontos=0;
 var inimigosPerdidos=0;
 
+var saveManager;
+
 var musica = true;
 
 function preload() {
@@ -103,6 +105,7 @@ function preload() {
 
   fasesPreview[0] =loadImage("assets/imgs/previewFase1.png");
   fasesPreview[1] =loadImage("assets/imgs/previewFase2.png");
+  fasesPreview[2] =loadImage("assets/imgs/previewFase3.png");
 
   explosionSpriteSheet = loadImage('assets/explosion.png');
 
@@ -125,6 +128,7 @@ function setup() {
   softcoreMusic.setVolume(0.2);
   softcoreMusic.pause();
 
+  saveManager = new SaveManagement();
   personagem = new Personagem();
 
   disparos= [new Disparo(), new Disparo()];
@@ -278,6 +282,18 @@ function keyReleased() {
 }
 
 function resetaJogo(){
+  switch (TELA) {
+    case FASE1:
+      saveManager.setRank(0,rank);
+      break;
+    case FASE2:
+      saveManager.setRank(1,rank);
+      break;
+    case FASE3:
+      saveManager.setRank(2,rank);
+      break;
+  }
+  
   personagem.reset();
   rankPonto=160;
   disparos.forEach((disparo) => {
