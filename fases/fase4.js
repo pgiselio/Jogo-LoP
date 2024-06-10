@@ -1,7 +1,7 @@
 let qtdInimigosFase4 = 4;
 
 function drawFase4() {
-  if (inimigos.length < qtdInimigosFase2) {
+  if (inimigos.length < qtdInimigosFase4) {
     inimigos.push(new Olhudo(2, 2));
   }
   parallaxBackground(

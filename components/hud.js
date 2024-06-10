@@ -1,3 +1,6 @@
+let vidaSprites = [];
+let currentLifeSprite = 0;
+
 function drawHud(faseName) {
   push();
   var pausarBtn = drawButton(
@@ -18,7 +21,12 @@ function drawHud(faseName) {
     "Esc",
     undefined,
     PLAYING && !PAUSED && !GAMEOVER && !WIN,
-    {...buttonBlackStyle, fontSize: 16, fontColor: "#CCC", hover: {...buttonBlackStyle.hover, fontColor: "#CCC"}}
+    {
+      ...buttonBlackStyle,
+      fontSize: 16,
+      fontColor: "#CCC",
+      hover: { ...buttonBlackStyle.hover, fontColor: "#CCC" },
+    }
   );
   // fill("#CCC");
   // textSize(16);
@@ -26,51 +34,61 @@ function drawHud(faseName) {
 
   fill(theme.fontColor);
   textSize(25);
-  text(faseName, canvas.width/2, 30);
+  text(faseName, canvas.width / 2, 30);
 
   //Pontuação
   push();
   textStyle(BOLD);
-  textFont('Courier New', 25);
+  textFont("Courier New", 25);
   textAlign(RIGHT, CENTER);
   text(pontos + " pts", canvas.width - 15, 30);
-  if (pontos == 300 ) {
+  if (pontos == 300) {
     WIN = true;
   }
-  //perda de pontos por vida
-  if(personagem.life==3){
-  rankPonto-=30
-  }else if(personagem.life==2){
-      rankPonto-=40
-      }else if(personagem.life==1){
-      rankPonto-=50
-      }
-      //rank
-      if (rankPonto >= 120) {
-          rank = "S";
-        } else if (rankPonto >= 90) {
-          rank = "A";
-        } else if (rankPonto >= 60) {
-          rank = "B";
-        } else {
-          rank = "C";
-        }
+  //rank
+  if (rankPonto >= 90) {
+    rank = "S";
+  } else if (rankPonto >= 70) {
+    rank = "A";
+  } else if (rankPonto >= 50) {
+    rank = "B";
+  } else {
+    rank = "C";
+  }
   pop();
 
-
   //Vidas
-  for(let i = 0; i < personagem.vidas; i++){
-    image(vidasImg, pausarBtn.pos.w + 30 + (i * 10), 10, 40, 40);
+  if (vidaSprites.length <= personagem.vidas) {
+      vidaSprites.push(new Sprite(vidasImg, 48, 48, 8));
+  }
+  if (vidaSprites.length > personagem.vidas){
+      vidaSprites.pop();
   }
   
+  vidaSprites.forEach((vida, index) => {
+    vida.show(pausarBtn.pos.w + 30 + (index * 10), 10)
+    vida.imageWidth = 40;
+    vida.imageHeight = 40;
+  });
+
+  if(currentLifeSprite < personagem.vidas && frameCount%2==0 && !PAUSED && !GAMEOVER && !WIN){
+    vidaSprites[currentLifeSprite] && vidaSprites[currentLifeSprite].animate();
+  }
+  if(currentLifeSprite >= personagem.vidas){
+      currentLifeSprite = 0;
+  }
+  if(vidaSprites[currentLifeSprite] && vidaSprites[currentLifeSprite].currentFrame >= vidaSprites[currentLifeSprite].numFrames - 1){
+    vidaSprites[currentLifeSprite].currentFrame = 0;
+    currentLifeSprite++;
+  }
+
   if (personagem.vidas == 0) {
     GAMEOVER = true;
-    rankPonto=160;
+    rankPonto = 100;
   }
-  if(!PAUSED && !GAMEOVER){
+  if (!PAUSED && !GAMEOVER) {
     setInteractives([pausarBtn]);
   }
 
-  
   pop();
 }

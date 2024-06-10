@@ -2,6 +2,7 @@
 function drawTelaFases(){
   push()
   imageMode(CENTER); 
+  textSize(20);
   
   image(fasesPreview[0], canvas.width/2 - 100, canvas.height/2 - 100, 180, 135);
   let fase1Btn = drawButton( canvas.width/2 - 100, canvas.height/2 - 100, 180, 135, "Fase 1", () =>  TELA = FASE1, TELA == FASES, buttonSeletorDeFasesStyle);
@@ -14,6 +15,15 @@ function drawTelaFases(){
   
   image(fasesPreview[3], fase2Btn.pos.x, fase3Btn.pos.y, 180, 135);
   let fase4Btn = drawButton(fase2Btn.pos.x, fase3Btn.pos.y, fase1Btn.pos.w, 135, "Fase 4", () =>  TELA = FASE4, TELA == FASES, buttonSeletorDeFasesStyle);
+
+  let resetarSaveBtn = drawButton(voltarBtn.pos.x - voltarBtn.pos.w - 20, voltarBtn.pos.y, 120, 40, "Resetar ranks", () => {
+    if(confirm("Deseja mesmo resetar os ranks?"))
+        saveManager.reset()
+  }, TELA == FASES, {
+    fontSize: 17,
+    hover: { backgroundColor: theme.pallete[0] },
+  });
+
 
   textFont(evilEmpireFont);
   textSize(20);
@@ -46,7 +56,7 @@ function drawTelaFases(){
     );
 
   pop();
-  setInteractives([fase1Btn, fase2Btn, fase3Btn, fase4Btn, voltarBtn]);
+  setInteractives([fase1Btn, fase2Btn, fase3Btn, fase4Btn, voltarBtn, resetarSaveBtn]);
 
 }
 

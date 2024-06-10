@@ -5,7 +5,7 @@ class Personagem {
     this.y = canvas.height / 2;
     this.width = 58 * 1.1;
     this.height = 46 * 1.1;
-    this.maxLife = 4;
+    this.maxLife = 5;
     this.vidas = this.maxLife;
     this.velocidade = 10;
     this.sprite = new Sprite(personagemSpriteSheet, 58, 46, 8);
@@ -30,10 +30,8 @@ class Personagem {
       isAnimating = false;
       this.sprite.spriteLine = 0;
     }
-    if(PLAYING && !PAUSED && isAnimating && frameCount % 10 == 0){
+    if(PLAYING && !PAUSED && frameCount % 10 == 0){
       this.sprite.animate();
-    }else if(frameCount % 10 == 0 && !PAUSED) {
-      this.sprite.animate()
     }
     disparos.forEach((disparo) => {
       disparo.draw();
@@ -104,6 +102,7 @@ class Personagem {
   }
   recebeuDano(quantidade) {
     this.vidas -= quantidade || 1;
+    rankPonto -= 10;
   }
   reset() {
     this.x = 50;

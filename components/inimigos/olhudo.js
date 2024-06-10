@@ -16,7 +16,6 @@ class Olhudo {
     this.disparoInimigoX = this.x;
     this.disparoInimigoY = this.y;
     this.shootInterval = 120;  // Intervalo de tiro (em frames)
-    this.shootTimer = 0;
   }
 
   draw() {
@@ -86,15 +85,6 @@ class Olhudo {
     );
   }
 
-  checkCollisionEnemyShoot(disparoX, disparoY) {
-    return (
-      disparoX >= personagem.x - personagem.width / 2 &&
-      disparoX <= personagem.x + personagem.width / 2 &&
-      disparoY >= personagem.y - personagem.height / 2 &&
-      disparoY <= personagem.y + personagem.height / 2
-    );
-  }
-
   setMaxLife(maxLife) {
     this.maxLife = maxLife;
   }
@@ -131,18 +121,16 @@ class Olhudo {
       this.reset();
       pontos -= 15;
       monstrosPerdidos++;
-      rankPonto -= 10;
+      if (inimigosPerdidos%5 == 0 && inimigosPerdidos < 50) rankPonto -= 10;
     }
     pop();
   }
 
   shootando() {
-    this.shootTimer++;
-    if (this.shootTimer > this.shootInterval) {
+    if (frameCount%this.shootInterval == 0 && this.life > 0) {
       this.disparoInimigo = true;
       this.disparoInimigoY = this.y;
       this.disparoInimigoX = this.x;
-      this.shootTimer = 0;
     }
   
     // Desenho do disparo
@@ -155,11 +143,10 @@ class Olhudo {
       }
   
       // Verifica a colisão do disparo do inimigo
-      let disparoInimigoColisao = this.checkCollisionEnemyShoot(this.disparoInimigoX, this.disparoInimigoY);
+      let disparoInimigoColisao = personagem.checkCollision(this.disparoInimigoX, this.disparoInimigoY);
       if (disparoInimigoColisao) {
         this.disparoInimigo = false;
         personagem.recebeuDano(1);
-        console.log("Eita dano bom ")
       }
     }
   }

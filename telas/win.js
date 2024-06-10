@@ -18,35 +18,35 @@ function drawTelaWin() {
   textStyle(BOLD);
   textFont(evilEmpireFont);
   textLeading(60);
-  text("RESULTADOS", 0, -100);
+  text("RESULTADOS", 0, -80);
 
   fill("rgba(0, 0, 0, 0.7)");
   rectMode(CENTER);
   stroke(169, 169, 169); 
   strokeWeight(3);
-  rect(0, -5, canvas.width * 0.6, 130,20,20);
+  rect(0, 30, canvas.width * 0.6, 130,20,20);
 
   stroke(0); 
   strokeWeight(1);
   textSize(40);
-  fill(`#FFDEAD`);
-  text("Vidas:"+ personagem.vidas+"/4",0,-45)
-  text("Monstros perdidos: "+monstrosPerdidos,0,-15)
-  text("Rank: "+ rank, 0,15  )
+  fill(`#FFF`);
+  text("Vidas: "+ personagem.vidas+"/"+personagem.maxLife,0, -10)
+  text("Monstros perdidos: "+monstrosPerdidos,0, 28)
+  text("Rank: "+ rank, 0, 65)
 
   translate(-canvas.width / 2, -139);
   textFont(theme.textFont);
   let proximaFase;
-  if(TELA != FASE3){
+  if(TELA != FASE4){
     proximaFase = drawButton(
     canvas.width / 2,
-    canvas.height / 2 ,
-    220,
+    canvas.height / 2  + 50,
+    230,
     45,
     "Próxima fase",
     () => {
       resetaJogo();
-      rankPonto=160;
+      rankPonto=100;
       switch (TELA) {
         case FASE1:
           TELA = FASE2;
@@ -57,7 +57,7 @@ function drawTelaWin() {
         case FASE3:
           TELA = FASE4;
           break;
-           case FASE4:
+        case FASE4:
           TELA = FASES;
           break;
       }
@@ -68,7 +68,7 @@ function drawTelaWin() {
 
   let goBackW = drawButton(
     canvas.width / 2,
-    proximaFase ? (proximaFase.pos.y + proximaFase.pos.h + 10) : canvas.height/2,
+    proximaFase ? (proximaFase.pos.y + proximaFase.pos.h + 10) : canvas.height/2 + 50,
     230,
     45,
     "Selecionar fase",
@@ -84,7 +84,7 @@ function drawTelaWin() {
   let goToMenu = drawButton(
     canvas.width / 2,
     goBackW.pos.y + goBackW.pos.h + 10,
-    220,
+    230,
     45,
     "Voltar para o menu",
     () => {

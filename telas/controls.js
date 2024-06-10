@@ -3,9 +3,9 @@ function drawTelaControls(){
     textStyle(BOLD);
     textSize(30);
   
+    fill(theme.fontColor);
     text("Controles", canvas.width/2, 80);
 
-    fill(theme.fontColor);
     textStyle(NORMAL);
     textSize(20);
     let arrowsKeysImg = image(keysImg, canvas.width/2 - 180, 150, 92*0.8, 64*0.8, 0, 0, keysImg.width, 64);

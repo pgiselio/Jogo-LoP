@@ -1,13 +1,19 @@
 
 function drawTelaMenu(){
   push();
+    image(fundoMenuImg, 0, 0, canvas.width , canvas.height, 0, 0, fundoMenuImg.width, canvas.height, COVER);
+      
+    textFont(evilEmpireFont);
+    fill("#000");
+    textSize(50);
+    text("W I T C H", canvas.width/2, 140);
+  pop();
 
-  image(fundoMenuImg, 0, 0, canvas.width , canvas.height, 0, 0, fundoMenuImg.width, canvas.height, COVER);
-  
-  fill(theme.fontColor);
-  textSize(35);
-  text("O JOGO", canvas.width/2, 140);
-  
+
+  push();
+
+  fill("#F1F1F1");
+
   let jogarBtn = drawButton(canvas.width/2, canvas.height/2 - 30, 150, 45, "Jogar", (() =>  TELA = FASES), TELA == MENU, buttonBlackStyle);
   
   let controlesBtn = drawButton(canvas.width/2, jogarBtn.pos.y + jogarBtn.pos.h + 10, 150, 45, "Controles",( () =>  TELA = CONTROLS), TELA == MENU, buttonBlackStyle);

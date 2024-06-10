@@ -15,7 +15,7 @@ function drawTelaCreditos() {
   pedroImg.mask(roundedShape);
   denisImg.mask(roundedShape);
   let imgsSize = 70;
-  let img1Pos = { x: 70, y: 90 };
+  let img1Pos = { x: 70, y: 80 };
   let img2Pos = { x: canvas.width - 70, y: img1Pos.y - 10 + imgsSize };
   image(pedroImg, img1Pos.x, img1Pos.y, imgsSize, imgsSize);
   image(denisImg, img2Pos.x, img2Pos.y, imgsSize, imgsSize);
@@ -46,12 +46,12 @@ function drawTelaCreditos() {
   );
 
   textSize(18);
-  text("ASSETS:", 70, img2Pos.y + 60);
+  text("ASSETS:", 70, img2Pos.y + 40);
   textSize(13);
   textAlign(LEFT);
   assetsCredits[0] = new assetCredit(
     30,
-    img2Pos.y + 80,
+    img2Pos.y + 60,
     `"Arrow keys, wsad, mouse icon" by InanZen licensed CC0: `,
     "https://opengameart.org/content/arrow-keys-wsad-mouse-icon",
     TELA == CREDITS
@@ -117,6 +117,20 @@ function drawTelaCreditos() {
     assetsCredits[8].pos.y + 20,
     `"Sunset Clouds Over The Sea Pixel Background" by Craftpix studio licensed OGA-BY 3.0: `,
     "https://opengameart.org/content/sunset-clouds-over-the-sea-pixel-background",
+    TELA == CREDITS
+  );
+  assetsCredits[10] = new assetCredit(
+    30,
+    assetsCredits[9].pos.y + 20,
+    `(MUSIC) "Softcore - the neighbourhood" instrumental edit by RockstarBeats: `,
+    "https://www.youtube.com/watch?v=z4g9pA0EnXA",
+    TELA == CREDITS
+  );
+  assetsCredits[11] = new assetCredit(
+    30,
+    assetsCredits[10].pos.y + 20,
+    `"Heart 16x16" by NicoleMarieProductions licensed CC-BY 3.0: `,
+    "https://opengameart.org/content/heart-1616",
     TELA == CREDITS
   );
   pop();

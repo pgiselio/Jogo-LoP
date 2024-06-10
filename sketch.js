@@ -74,7 +74,7 @@ var disparos = [];
 //Variáveis de pontuação
 let monstrosPerdidos=0;
 let rank="";
-let rankPonto=160;
+let rankPonto=100;
 
 //Variáveis de status de jogo
 var pontos=0;
@@ -125,7 +125,7 @@ function preload() {
   explosionSpriteSheet = loadImage('assets/explosion.png');
 
   fundoMenuImg =loadImage("assets/fundos/background.jpg");
-  vidasImg =loadImage("assets/vidas.gif");
+  vidasImg =loadImage("assets/vidas.png");
   olhudoImg = loadImage("assets/olhudo.png");
   evilEmpireFont = loadFont('assets/fonts/evil-empire.otf');
 }
@@ -228,7 +228,21 @@ function draw() {
     scaleTaxaGO = 0.8;
   }
   if(WIN){
-    drawTelaWin();
+    switch (TELA) {
+      case FASE1:
+        saveManager.setRank(0,rank);
+        break;
+      case FASE2:
+        saveManager.setRank(1,rank);
+        break;
+      case FASE3:
+        saveManager.setRank(2,rank);
+        break;
+      case FASE4:
+        saveManager.setRank(3,rank);
+        break;
+    }
+    drawTelaWin(); 
   }else{
     scaleTaxaW = 0.8;
   }
@@ -299,21 +313,9 @@ function keyReleased() {
   }
 }
 
-function resetaJogo(){
-  switch (TELA) {
-    case FASE1:
-      saveManager.setRank(0,rank);
-      break;
-    case FASE2:
-      saveManager.setRank(1,rank);
-      break;
-    case FASE3:
-      saveManager.setRank(2,rank);
-      break;
-  }
-  
+function resetaJogo(){  
   personagem.reset();
-  rankPonto=160;
+  rankPonto=100;
   disparos.forEach((disparo) => {
     disparo.reset();
   });

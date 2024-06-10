@@ -16,7 +16,6 @@ class SaveManagement {
     }
     saveGame() {
         const storagedSave = this.getFromLocalStorage();
-        console.log(storagedSave);
         if (storagedSave) {
             storagedSave.forEach((value, index) => {
                 if (this.save[index] <= value) {
@@ -24,7 +23,6 @@ class SaveManagement {
                 }
             })
         }
-        console.log(this.save)
         localStorage.setItem('LoPGameSave', this.save.toString());
     }
     loadSave() {
